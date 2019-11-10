@@ -1,0 +1,47 @@
+Banco de Dados Sistema RH
+Tabela:
+- Funcionario
+    ID int(3) Primary Key
+    nome varchar(255)
+    telefone varchar(12)
+    email varchar(70)
+    cpf varchar(11)
+    ctps varchar(??)
+    tipo_contrato varchar(??)
+    status bool             
+    RG varchar(9)
+    cep varchar(8)
+    Cargo int(100)  ----->  select id from cargo where nome = "(dropdown)"
+    
+-Cargo
+    ID auto-increment Primary Key
+    nome varchar(100)
+    salHoraInicial float(5)
+ 
+
+-taxas
+float FGTS
+float INSS
+13°
+Ferias
+-salario
+    ID varchar(3)
+    salHora(5)
+    dataAlteracao timestamp
+    fk_IdCargo foreign key
+    fk_IdFuncionario foreign key 
+
+    update salHora where fk_iDCargo = 5
+   salHora int
+
+-Horario
+    Fk_Funcionario foreing key
+    PK_ID int(??) Primary key
+    entrada timestamp
+    saida timestamp
+
+
+-tragedia
+
+
+
