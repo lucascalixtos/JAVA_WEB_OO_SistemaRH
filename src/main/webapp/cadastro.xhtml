@@ -5,7 +5,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<title>Cadastro de Funcionário</title>
 </h:head>
 <h:body>
 	
@@ -13,21 +13,37 @@
 	<h:form>
 		<h:panelGrid columns="2">
 			Nome <h:inputText/>
-			Senha <h:inputSecret/>
+			Data de Nascimento <h:inputText/>
 			Sexo
 			<h:selectOneMenu>
 				<f:selectItem itemLabel="Masculino" itemValue="M"/>
 				<f:selectItem itemLabel="Feminino" itemValue="F"/>
 			</h:selectOneMenu>
-			
-			Status
-			<h:selectOneRadio>
-				<f:selectItem itemLabel="Ativo" itemValue="A"/>
-				<f:selectItem itemLabel="Inativo" itemValue="I"/>
-			</h:selectOneRadio>
-			
-			Observações<h:inputTextarea rows="3" cols="20"/>
-			<h:commandButton value="Cadastrar"/>
+			Telefone <h:inputText/>
+			Email <h:inputText/>
+			CEP <h:inputText/>
+			Endereço <h:inputText/>
+			Bairro <h:inputText/>
+			Cidade <h:inputText/>
+			Numero <h:inputText/>
+			RG <h:inputText/>
+			CPF <h:inputText/>
+			CTPS <h:inputText/>
+			Tipo de Contrato
+			<h:selectOneMenu>
+				<f:selectItem itemLabel="CLT" itemValue="CLT"/>
+				<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
+				<f:selectItem itemLabel="Estágio" itemValue="Estagio"/>
+			</h:selectOneMenu>
+			Cargo
+			<h:selectOneMenu>
+				<f:selectItem itemLabel="Programador Junior" itemValue="ProgramadorJr"/>
+				<f:selectItem itemLabel="Programador Pleno" itemValue="ProgramadorP"/>
+				<f:selectItem itemLabel="Programador Senior" itemValue="ProgramadorS"/>
+				<f:selectItem itemLabel="Supervisor" itemValue="Supervisor"/>
+				<f:selectItem itemLabel="Gerente" itemValue="Gerente"/>
+			</h:selectOneMenu>
+			<h:commandButton value="Salvar"/>
 		</h:panelGrid>
 	</h:form>
 </h:body>

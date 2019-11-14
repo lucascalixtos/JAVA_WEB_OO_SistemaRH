@@ -3,6 +3,8 @@ Tabela:
 - Funcionario
     ID int(3) Primary Key
     nome varchar(255)
+	data_nascimento varchar(10)
+	sexo varchar(20)
     telefone varchar(12)
     email varchar(70)
     cpf varchar(11)
@@ -11,8 +13,11 @@ Tabela:
     status bool             
     RG varchar(9)
     cep varchar(8)
+	num_residencia varchar(4)
     Cargo int(100)  ----->  select id from cargo where nome = "(dropdown)"
-    
+	horario_entrada date(5)
+    horario_saida date(5)
+	
 -Cargo
     ID auto-increment Primary Key
     nome varchar(100)
