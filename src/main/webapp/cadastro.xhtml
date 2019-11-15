@@ -5,46 +5,28 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Cadastro de Funcionário</title>
+<title>Insert title here</title>
 </h:head>
 <h:body>
-	
-	<h1>Cadastro de Funcionário</h1>
+
+
 	<h:form>
-		<h:panelGrid columns="2">
-			Nome <h:inputText/>
-			Data de Nascimento <h:inputText/>
-			Sexo
-			<h:selectOneMenu>
-				<f:selectItem itemLabel="Masculino" itemValue="M"/>
-				<f:selectItem itemLabel="Feminino" itemValue="F"/>
-			</h:selectOneMenu>
-			Telefone <h:inputText/>
-			Email <h:inputText/>
-			CEP <h:inputText/>
-			Endereço <h:inputText/>
-			Bairro <h:inputText/>
-			Cidade <h:inputText/>
-			Numero <h:inputText/>
-			RG <h:inputText/>
-			CPF <h:inputText/>
-			CTPS <h:inputText/>
-			Tipo de Contrato
-			<h:selectOneMenu>
-				<f:selectItem itemLabel="CLT" itemValue="CLT"/>
-				<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
-				<f:selectItem itemLabel="Estágio" itemValue="Estagio"/>
-			</h:selectOneMenu>
-			Cargo
-			<h:selectOneMenu>
-				<f:selectItem itemLabel="Programador Junior" itemValue="ProgramadorJr"/>
-				<f:selectItem itemLabel="Programador Pleno" itemValue="ProgramadorP"/>
-				<f:selectItem itemLabel="Programador Senior" itemValue="ProgramadorS"/>
-				<f:selectItem itemLabel="Supervisor" itemValue="Supervisor"/>
-				<f:selectItem itemLabel="Gerente" itemValue="Gerente"/>
-			</h:selectOneMenu>
-			<h:commandButton value="Salvar"/>
+		<h:panelGrid columns = "2">
+			<h:outputText value="Nome"/>
+			<h:inputText valeu="#{bean.pessoa.nome}"/>
+			<h:outputText value="E-mail"/>
+			<h:inputText valeu="#{bean.pessoa.email}"/>
+				<h:outputText />
+			<h:commandButton value = "Adicionar" action="#{bean.adicionar}"/>
 		</h:panelGrid>
 	</h:form>
+	<h1>Lista de pessoas</h1>
+	<h:dataTable value="#{bean.pessoas}" var="p" border="1">
+	
+		<h:column>#{p.nome}</h:column>
+		<h:column>#{p.email}</h:column>
+	
+	</h:dataTable>
+
 </h:body>
 </html>
