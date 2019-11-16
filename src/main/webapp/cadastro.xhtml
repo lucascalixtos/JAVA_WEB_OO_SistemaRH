@@ -2,49 +2,52 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Cadastro de Funcionário</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<h:outputStylesheet library="css" name="file.css" />
+	
+	<title>Cadastro de Funcionário</title>
 </h:head>
 <h:body>
 	
-	<h1>Cadastro de Funcionário</h1>
-	<h:form>
-		<h:panelGrid columns="2">
-			Nome <h:inputText/>
-			Data de Nascimento <h:inputText/>
-			Sexo
-			<h:selectOneMenu>
-				<f:selectItem itemLabel="Masculino" itemValue="M"/>
-				<f:selectItem itemLabel="Feminino" itemValue="F"/>
-			</h:selectOneMenu>
-			Telefone <h:inputText/>
-			Email <h:inputText/>
-			CEP <h:inputText/>
-			Endereço <h:inputText/>
-			Bairro <h:inputText/>
-			Cidade <h:inputText/>
-			Numero <h:inputText/>
-			RG <h:inputText/>
-			CPF <h:inputText/>
-			CTPS <h:inputText/>
-			Tipo de Contrato
-			<h:selectOneMenu>
-				<f:selectItem itemLabel="CLT" itemValue="CLT"/>
-				<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ"/>
-				<f:selectItem itemLabel="Estágio" itemValue="Estagio"/>
-			</h:selectOneMenu>
-			Cargo
-			<h:selectOneMenu>
-				<f:selectItem itemLabel="Programador Junior" itemValue="ProgramadorJr"/>
-				<f:selectItem itemLabel="Programador Pleno" itemValue="ProgramadorP"/>
-				<f:selectItem itemLabel="Programador Senior" itemValue="ProgramadorS"/>
-				<f:selectItem itemLabel="Supervisor" itemValue="Supervisor"/>
-				<f:selectItem itemLabel="Gerente" itemValue="Gerente"/>
-			</h:selectOneMenu>
-			<h:commandButton value="Salvar"/>
-		</h:panelGrid>
-	</h:form>
+	<p:panel header="Cadastro de Funcionários" >
+		<h:form id="form">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Nome" /> <p:inputText value="#{funcionarioBean.funcionario.nome}"/>
+				<p:outputLabel value="Data de Nascimento" /> <p:inputText value="#{funcionarioBean.funcionario.dataNascimento}"/>
+				<p:outputLabel value="Sexo" />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="Masculino" itemValue="M" value="#{funcionarioBean.funcionario.sexo}" />
+					<f:selectItem itemLabel="Feminino" itemValue="F" value="#{funcionarioBean.funcionario.sexo}" />
+				</p:selectOneMenu>
+				<p:outputLabel value="Telefone" /><p:inputText value="#{funcionarioBean.funcionario.telefone}" />
+				<p:outputLabel value="Email" /><p:inputText value="#{funcionarioBean.funcionario.email}" />
+				<p:outputLabel value="CEP" /><p:inputText value="#{funcionarioBean.funcionario.cep}" />
+				<p:outputLabel value="Número" /><p:inputText value="#{funcionarioBean.funcionario.numResidencial}" />
+				<p:outputLabel value="RG" /><p:inputText value="#{funcionarioBean.funcionario.rg}" />
+				<p:outputLabel value="CPF" /><p:inputText value="#{funcionarioBean.funcionario.cpf}" />
+				<p:outputLabel value="CTPS" /><p:inputText value="#{funcionarioBean.funcionario.ctps}" />
+				<p:outputLabel value="Tipo de Contrato" />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="CLT" itemValue="CLT" value="#{funcionarioBean.funcionario.tipoContrato}" />
+					<f:selectItem itemLabel="Pessoa Jurídica" itemValue="PJ" value="#{funcionarioBean.funcionario.tipoContrato}" />
+					<f:selectItem itemLabel="Estágio" itemValue="Estagio" value="#{funcionarioBean.funcionario.tipoContrato}" />
+				</p:selectOneMenu>
+				<p:outputLabel value="Cargo" />
+				<p:selectOneMenu>
+					<f:selectItem itemLabel="Programador Junior" itemValue="ProgramadorJr" value="#{funcionarioBean.funcionario.cargo}" />
+					<f:selectItem itemLabel="Programador Pleno" itemValue="ProgramadorP" value="#{funcionarioBean.funcionario.cargo}" />
+					<f:selectItem itemLabel="Programador Senior" itemValue="ProgramadorS " value="#{funcionarioBean.funcionario.cargo}" />
+					<f:selectItem itemLabel="Supervisor" itemValue="Supervisor" value="#{funcionarioBean.funcionario.cargo}" />
+					<f:selectItem itemLabel="Gerente" itemValue="Gerente" value="#{funcionarioBean.funcionario.cargo}" />
+				</p:selectOneMenu>
+				<p:commandButton value="Salvar" update="form"/>
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
 </h:body>
 </html>

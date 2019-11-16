@@ -1,11 +1,134 @@
 package br.com.rh.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Funcionario {
+public class Funcionario implements Serializable {
 	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
+		result = prime * result + ((cep == null) ? 0 : cep.hashCode());
+		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((ctps == null) ? 0 : ctps.hashCode());
+		result = prime * result
+				+ ((dataNascimento == null) ? 0 : dataNascimento.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result
+				+ ((horarioEntrada == null) ? 0 : horarioEntrada.hashCode());
+		result = prime * result
+				+ ((horarioSaida == null) ? 0 : horarioSaida.hashCode());
+		result = prime * result + id;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result
+				+ ((numResidencial == null) ? 0 : numResidencial.hashCode());
+		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
+		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result
+				+ ((telefone == null) ? 0 : telefone.hashCode());
+		result = prime * result
+				+ ((tipoContrato == null) ? 0 : tipoContrato.hashCode());
+		return result;
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Funcionario other = (Funcionario) obj;
+		if (cargo == null) {
+			if (other.cargo != null)
+				return false;
+		} else if (!cargo.equals(other.cargo))
+			return false;
+		if (cep == null) {
+			if (other.cep != null)
+				return false;
+		} else if (!cep.equals(other.cep))
+			return false;
+		if (cpf == null) {
+			if (other.cpf != null)
+				return false;
+		} else if (!cpf.equals(other.cpf))
+			return false;
+		if (ctps == null) {
+			if (other.ctps != null)
+				return false;
+		} else if (!ctps.equals(other.ctps))
+			return false;
+		if (dataNascimento == null) {
+			if (other.dataNascimento != null)
+				return false;
+		} else if (!dataNascimento.equals(other.dataNascimento))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (horarioEntrada == null) {
+			if (other.horarioEntrada != null)
+				return false;
+		} else if (!horarioEntrada.equals(other.horarioEntrada))
+			return false;
+		if (horarioSaida == null) {
+			if (other.horarioSaida != null)
+				return false;
+		} else if (!horarioSaida.equals(other.horarioSaida))
+			return false;
+		if (id != other.id)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (numResidencial == null) {
+			if (other.numResidencial != null)
+				return false;
+		} else if (!numResidencial.equals(other.numResidencial))
+			return false;
+		if (rg == null) {
+			if (other.rg != null)
+				return false;
+		} else if (!rg.equals(other.rg))
+			return false;
+		if (sexo == null) {
+			if (other.sexo != null)
+				return false;
+		} else if (!sexo.equals(other.sexo))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
+		if (telefone == null) {
+			if (other.telefone != null)
+				return false;
+		} else if (!telefone.equals(other.telefone))
+			return false;
+		if (tipoContrato == null) {
+			if (other.tipoContrato != null)
+				return false;
+		} else if (!tipoContrato.equals(other.tipoContrato))
+			return false;
+		return true;
+	}
+
+	private static final long serialVersionUID = 1L;
+	/**
+	*
+	*/
 
 	private int    id;
 	private String nome;
@@ -115,7 +238,8 @@ public class Funcionario {
 				this.getHorarioSaida()
 		);
 	}
-
+	
+	
 	public int getId() {
 		return id;
 	}

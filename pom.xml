@@ -34,7 +34,17 @@
     	<groupId>mysql</groupId>
     	<artifactId>mysql-connector-java</artifactId>
     	<version>8.0.18</version>
-</dependency>
+	</dependency>
+	<dependency>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces</artifactId>
+		<version>6.2</version>
+	</dependency>
+	<dependency>
+		<groupId>org.primefaces</groupId>
+		<artifactId>primefaces</artifactId>
+		<version>6.2</version>
+	</dependency>
   </dependencies>
   
   

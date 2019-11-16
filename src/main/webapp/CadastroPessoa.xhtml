@@ -2,30 +2,38 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<h:outputStylesheet library="css" name="file.css" />
+	
+	<title>Insert title here</title>
 </h:head>
 <h:body>
+
+	<p:graphicImage library="imagens" name="Logo IFSP.jpg" width="200" />
 	
-	<h:form>
-		<h:panelGrid columns="2">
-			<h:outputText value="Nome"/>
-			<h:inputText value="#{bean.pessoa.nome}"/>
-			<h:outputText value="E-mail"/>
-			<h:inputText value="#{bean.pessoa.email}"/>
-			<h:commandButton value="Adicionar" action="#{bean.adicionar}"/>
-		</h:panelGrid>
+	<h:form id="form">
+		<p:panel header="Cadastro de Clientes">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Nome"/>
+				<p:inputText value="#{bean.pessoa.nome}" size="50"/>
+				<p:outputLabel value="E-mail"/>
+				<p:inputText value="#{bean.pessoa.email}" size="50"/>
+				<p:commandButton value="Adicionar" action="#{bean.adicionar}" update="form tabelaPessoa"/>
+			</h:panelGrid>
+		</p:panel>
 	</h:form>
 	
 	<h1>Lista de Pessoas</h1>
-	<h:dataTable value="#{bean.pessoas}" var="p" border="1">
-		<h:column>#{p.nome}</h:column>
-		<h:column>#{p.email}</h:column>	
-		<h:column>
-			<h:button value="Editar" outcome="/paginas/Sucesso.xhtml?parametro=#{p.nome}"/>
-		</h:column>
-	</h:dataTable>
+	<p:dataTable value="#{bean.pessoas}" var="p" border="1" id="tabelaPessoa">
+		<p:column headerText="Nome">#{p.nome}</p:column>
+		<p:column headerText="Email">#{p.email}</p:column>	
+		<p:column headerText="Editar" width="80">
+			<p:button value="Editar" outcome="/paginas/Sucesso.xhtml?parametro=#{p.nome}"/>
+		</p:column>
+	</p:dataTable>
 </h:body>
 </html>
