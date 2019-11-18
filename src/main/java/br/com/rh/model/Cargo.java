@@ -1,9 +1,46 @@
 package br.com.rh.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Cargo {
+public class Cargo implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + Float.floatToIntBits(salHoraInicial);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cargo other = (Cargo) obj;
+		if (id != other.id)
+			return false;
+		if (nome == null) {
+			if (other.nome != null)
+				return false;
+		} else if (!nome.equals(other.nome))
+			return false;
+		if (Float.floatToIntBits(salHoraInicial) != Float
+				.floatToIntBits(other.salHoraInicial))
+			return false;
+		return true;
+	}
+
 	private int id;
 	private String nome;
 	private float salHoraInicial;
