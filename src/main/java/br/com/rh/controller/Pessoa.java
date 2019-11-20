@@ -1,4 +1,4 @@
-package br.com.projeto.controller;
+package br.com.rh.controller;
 
 import java.io.Serializable;
 

@@ -1,4 +1,4 @@
-package br.com.projeto.model;
+package br.com.rh.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.projeto.controller.Pessoa;
+import br.com.rh.controller.Pessoa;
 
 @SuppressWarnings("unused")
 @Named("bean")

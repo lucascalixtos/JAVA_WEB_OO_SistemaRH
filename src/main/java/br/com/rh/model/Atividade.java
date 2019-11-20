@@ -1,4 +1,4 @@
-package br.com.projeto.model;
+package br.com.rh.model;
 
 import java.io.Serializable;
 

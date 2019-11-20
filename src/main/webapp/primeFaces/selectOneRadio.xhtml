@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -8,7 +9,7 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="file.css" />
-	<title>Teste Select One Menu</title>
+	<title>Teste Radio BUtton</title>
 </h:head>
 <h:body>
 	<header>
@@ -19,23 +20,27 @@
 			<h:graphicImage library="imagens" name="Logo IFSP.jpg" width="50" />
 		</div>
 	</header>
+
 	<h:form>
 		<p:panelGrid columns="2">
-		
-			<h:outputText value="Evento"/>
-			<p:selectOneMenu value="#{AtividadeMB.atividade.tipoAtividade}" filter="true">
-				<f:selectItems value="#{AtividadeMB.atividades}" var="a" itemValue="#{a}" itemLabel="#{a.descricao}" />
-				
-				
-			</p:selectOneMenu>
-			
-			<p:commandButton value="Enviar" update="label"/>
-			<p:outputLabel value="#{AtividadeMB.atividade.tipoAtividade.descricao}" id="label"/>
 
+			<p:selectOneRadio value="#{clienteMB.tipoPessoa}">
+				<f:selectItem itemLabel="Fisica" itemValue="FISICA" />
+				<f:selectItem itemLabel="Juridica" itemValue="JURIDICA" />
+				<p:ajax event="click" update="input" process="@this" />
+			</p:selectOneRadio>
+
+			<h:panelGroup id="input">
+				<p:inputMask mask="999.999.999-99" value="CPF" id="cpf"
+					rendered="#{clienteMB.tipoPessoa
+				eq 'FISICA'}" required="true" />
+
+				<p:inputMask mask="99.999.999/9999-99" value="CNPJ" id="cnpj"
+					rendered="#{clienteMB.tipoPessoa
+				eq 'JURIDICA'}" required="true" />
+			</h:panelGroup>
 		</p:panelGrid>
 	</h:form>
-
-
 
 </h:body>
 </html>
