@@ -18,7 +18,8 @@
 		<h:form id="form">
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Título do Cargo" /> <p:inputText value="#{cargoBean.cargo.nome}"/>
-				<p:outputLabel value="Salário Inicial (Hora)" /> <p:inputText value="#{cargoBean.cargo.salHoraInicial}"/>
+				<p:outputLabel value="Salário Inicial (Hora) R$" /> 
+					<p:inputMask value="#{cargoBean.cargo.salHoraInicial}" mask="99.99"/>
 				<p:commandButton value="Salvar" update="form" />
 			</h:panelGrid>
 		</h:form>

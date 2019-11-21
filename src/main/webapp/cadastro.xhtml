@@ -18,19 +18,25 @@
 		<h:form id="form">
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Nome" /> <p:inputText value="#{funcionarioBean.funcionario.nome}"/>
-				<p:outputLabel value="Data de Nascimento" /> <p:inputText value="#{funcionarioBean.funcionario.dataNascimento}"/>
+				<p:outputLabel value="Data de Nascimento" /> <p:inputMask 
+					value="#{funcionarioBean.funcionario.dataNascimento}" mask="99/99/9999"/>
 				<p:outputLabel value="Sexo" />
 				<p:selectOneMenu value="#{funcionarioBean.funcionario.sexo}" >
 					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
 					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
 				</p:selectOneMenu>
-				<p:outputLabel value="Telefone" /><p:inputText value="#{funcionarioBean.funcionario.telefone}" />
+				<p:outputLabel value="Telefone" /><p:inputMask 
+					value="#{funcionarioBean.funcionario.telefone}" mask="(99)99999-9999"/>
 				<p:outputLabel value="Email" /><p:inputText value="#{funcionarioBean.funcionario.email}" />
-				<p:outputLabel value="CEP" /><p:inputText value="#{funcionarioBean.funcionario.cep}" />
+				<p:outputLabel value="CEP" /><p:inputMask
+					 value="#{funcionarioBean.funcionario.cep}" mask="99999-999" />
 				<p:outputLabel value="Número" /><p:inputText value="#{funcionarioBean.funcionario.numResidencial}" />
-				<p:outputLabel value="RG" /><p:inputText value="#{funcionarioBean.funcionario.rg}" />
-				<p:outputLabel value="CPF" /><p:inputText value="#{funcionarioBean.funcionario.cpf}" />
-				<p:outputLabel value="CTPS" /><p:inputText value="#{funcionarioBean.funcionario.ctps}" />
+				<p:outputLabel value="RG" /><p:inputMask
+					 value="#{funcionarioBean.funcionario.rg}" mask="99.999.999-9" />
+				<p:outputLabel value="CPF" /><p:inputMask
+					 value="#{funcionarioBean.funcionario.cpf}" mask="999.999.999-99"/>
+				<p:outputLabel value="CTPS" /><p:inputMask
+					 value="#{funcionarioBean.funcionario.ctps}" mask="9999999-99999"/>
 				<p:outputLabel value="Tipo de Contrato" />
 				<p:selectOneMenu value="#{funcionarioBean.funcionario.tipoContrato}">
 					<f:selectItem itemLabel="CLT" itemValue="CLT"  />

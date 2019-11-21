@@ -15,7 +15,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.rh.model.Funcionario;
-import br.com.rh.model.Funcionario;
 
 @Named("funcionarioBean")
 @SessionScoped
@@ -54,10 +53,9 @@ public class FuncionarioMB implements Serializable{
 		return funcionarios;
 	}
 
-	public void setFuncionarios(List<Funcionario> Funcionarios) {
+	public void setFuncionarios(List<Funcionario> Funcionarios, List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
 
 	
-
 }
