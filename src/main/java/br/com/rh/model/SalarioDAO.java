@@ -34,7 +34,7 @@ public class SalarioDAO extends DBQuery {
 			while (rs.next()) {
 				Salario tempSalario = new Salario();
 				tempSalario.setId( rs.getInt("id"));
-				tempSalario.setSalHora(rs.getFloat("salHora"));
+				tempSalario.setSalario(rs.getFloat("salario"));
 				tempSalario.setDataAlteracao(rs.getLong("dataAlteracao"));
 				tempSalario.setFk_IdCargo(rs.getInt("fk_IdCargo"));
 				tempSalario.setFk_IdFuncionario(rs.getInt("fk_IdFuncionario"));
@@ -53,7 +53,7 @@ public class SalarioDAO extends DBQuery {
 			while (rs.next()) {
 				Salario tempSalario = new Salario();
 				tempSalario.setId( rs.getInt("id"));
-				tempSalario.setSalHora(rs.getFloat("salHora"));
+				tempSalario.setSalario(rs.getFloat("salario"));
 				tempSalario.setDataAlteracao(rs.getLong("dataAlteracao"));
 				tempSalario.setFk_IdCargo(rs.getInt("fk_IdCargo"));
 				tempSalario.setFk_IdFuncionario(rs.getInt("fk_IdFuncionario"));
@@ -72,7 +72,7 @@ public class SalarioDAO extends DBQuery {
 			while (rs.next()) {
 				Salario tempSalario = new Salario();
 				tempSalario.setId( rs.getInt("id"));
-				tempSalario.setSalHora(rs.getFloat("salHora"));
+				tempSalario.setSalario(rs.getFloat("salario"));
 				tempSalario.setDataAlteracao(rs.getLong("dataAlteracao"));
 				tempSalario.setFk_IdCargo(rs.getInt("fk_IdCargo"));
 				tempSalario.setFk_IdFuncionario(rs.getInt("fk_IdFuncionario"));

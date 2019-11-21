@@ -15,7 +15,7 @@ public class Cargo implements Serializable {
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + Float.floatToIntBits(salHoraInicial);
+		result = prime * result + Float.floatToIntBits(salInicial);
 		return result;
 	}
 
@@ -35,24 +35,24 @@ public class Cargo implements Serializable {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (Float.floatToIntBits(salHoraInicial) != Float
-				.floatToIntBits(other.salHoraInicial))
+		if (Float.floatToIntBits(salInicial) != Float
+				.floatToIntBits(other.salInicial))
 			return false;
 		return true;
 	}
 
 	private int id;
 	private String nome;
-	private float salHoraInicial;
+	private float salInicial;
 	
 	public Cargo(){
 		
 	}
 	
-	public Cargo(int id, String nome, float salHoraInicial){
+	public Cargo(int id, String nome, float salInicial){
 		this.id = id;
 		this.nome = nome;
-		this.salHoraInicial = salHoraInicial;
+		this.salInicial = salInicial;
 	}
 	
 	public void save() {
@@ -75,7 +75,7 @@ public class Cargo implements Serializable {
 		new String[] { 
 				new Integer(  this.getId() ).toString(), 
 				this.getNome(),
-				new Float ( this.getSalHoraInicial() ). toString()
+				new Float ( this.getSalInicial() ). toString()
 		});
 	}
 	
@@ -83,7 +83,7 @@ public class Cargo implements Serializable {
 		return(
 				new Integer(  this.getId() ).toString()+ 
 				this.getNome()+ 
-				this.getSalHoraInicial()
+				this.getSalInicial()
 		);
 	}
 
@@ -103,12 +103,12 @@ public class Cargo implements Serializable {
 		this.nome = nome;
 	}
 
-	public float getSalHoraInicial() {
-		return salHoraInicial;
+	public float getSalInicial() {
+		return salInicial;
 	}
 
-	public void setSalHoraInicial(float salHoraInicial) {
-		this.salHoraInicial = salHoraInicial;
+	public void setSalInicial(float salInicial) {
+		this.salInicial = salInicial;
 	}
 	
 }

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Folha de Pagamento</title>
+</h:head>
+<h:body>
+	<p:panel header="Folha de Pagamento">
+		<h5><b>Nome: </b> João Silva </h5>
+		<h5><b>Cargo: </b> Programador</h5>
+<p:panelGrid style="margin-top:20px">
+    <f:facet name="header">
+        <p:row>
+            <!--<p:column colspan="7">1995-96 NBA Playoffs</p:column>-->
+        </p:row>
+        <p:row>
+            <p:column colspan="5">Descrição</p:column>
+            <p:column>Referência</p:column>
+            <p:column colspan="2">Vencimentos (R$)</p:column>
+            <p:column colspan="2">Descontos (R$)</p:column>
+        </p:row>
+ 
+    </f:facet>
+ 
+ 		<p:row>
+ 			<p:column colspan="5">Salário</p:column>
+ 			<p:column>(T. Horas)</p:column>
+ 			<p:column colspan="2">9999.99</p:column>
+ 			<p:column colspan="2"></p:column>
+ 		</p:row>
+ 		
+ 		<p:row>
+ 			<p:column colspan="5">INSS</p:column>
+ 			<p:column>%</p:column>
+ 			<p:column colspan="2"></p:column>
+ 			<p:column colspan="2">9999.99</p:column>
+ 		</p:row>
+ 		
+ 		<p:row>
+ 			<p:column colspan="5">Vale Transporte</p:column>
+ 			<p:column>%</p:column>
+ 			<p:column colspan="2"></p:column>
+ 			<p:column colspan="2">9999.99</p:column>
+ 		</p:row>
+       
+ 
+    <f:facet name="footer">
+        <p:row>
+            <p:column  colspan="4" style="text-align: right">
+                Total dos Vencimentos
+            </p:column>
+            <p:column>R$9999.99</p:column>
+        </p:row>
+ 
+        <p:row>
+            <p:column  colspan="4" style="text-align: right">
+                Total dos Descontos
+            </p:column>
+            <p:column>R$9999.99</p:column>
+        </p:row>
+        <p:row>
+            <p:column  colspan="4" style="text-align: right">
+                Total Líquido
+            </p:column>
+            <p:column>R$9999.99</p:column>
+        </p:row>
+    </f:facet>
+</p:panelGrid>
+                    
+	</p:panel>
+</h:body>
+</html>

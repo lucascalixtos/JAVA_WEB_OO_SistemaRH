@@ -79,7 +79,7 @@ CREATE TABLE `horario` (
 
 CREATE TABLE `salario` (
   `id` int(11) NOT NULL,
-  `salHora` float NOT NULL,
+  `salario` float NOT NULL,
   `dataAlteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

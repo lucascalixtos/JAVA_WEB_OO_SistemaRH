@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Salario {
 	
 	private int id;
-	private float salHora;
+	private float salario;
 	private long dataAlteracao;
 	private int fk_IdCargo;
 	private int fk_IdFuncionario;
@@ -16,9 +16,9 @@ public class Salario {
 		
 	}
 	
-	public Salario(int id, float salHora, long dataAlteracao, int fk_IdCargo, int fk_IdFuncionario){
+	public Salario(int id, float salario, long dataAlteracao, int fk_IdCargo, int fk_IdFuncionario){
 		this.id = id;
-		this.salHora = salHora;
+		this.salario = salario;
 		this.dataAlteracao = dataAlteracao;
 		this.fk_IdCargo = fk_IdCargo;
 		this.fk_IdFuncionario = fk_IdFuncionario;
@@ -44,7 +44,7 @@ public class Salario {
 		return(
 		new String[] { 
 				new Integer(  this.getId() ).toString(), 
-			new Float( this.getSalHora() ).toString(),
+			new Float( this.getSalario() ).toString(),
 			new Timestamp(this.getDataAlteracao()) .toString(),
 			new Integer(  this.getFk_IdFuncionario() ).toString(),
 			new Integer(  this.getFk_IdCargo() ).toString()
@@ -54,7 +54,7 @@ public class Salario {
 	public String toString() {
 		return(
 				new Integer(  this.getId() ).toString() +
-				new Float( this.getSalHora() ).toString() +
+				new Float( this.getSalario() ).toString() +
 				new Timestamp(this.getDataAlteracao()) .toString() +
 				new Integer(  this.getFk_IdFuncionario() ).toString() +
 				new Integer(  this.getFk_IdCargo() ).toString()
@@ -69,12 +69,12 @@ public class Salario {
 		this.id = id;
 	}
 
-	public float getSalHora() {
-		return salHora;
+	public float getSalario() {
+		return salario;
 	}
 
-	public void setSalHora(float salHora) {
-		this.salHora = salHora;
+	public void setSalario(float salario) {
+		this.salario = salario;
 	}
 
 	public long getDataAlteracao() {

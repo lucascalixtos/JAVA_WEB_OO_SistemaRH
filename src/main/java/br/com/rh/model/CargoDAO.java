@@ -15,14 +15,14 @@ public class CargoDAO extends DBQuery {
 	
 	public CargoDAO(Cargo Cargo) {
 		this.setTable	("Cargo");
-		this.setFields	(new String[]{"id","nome", "salHoraInicial"});
+		this.setFields	(new String[]{"id","nome", "salInicial"});
 		this.setKeyField("id");
 		this.setCargo(Cargo);
 	}
 	
 	public CargoDAO() {
 		this.setTable	("Cargo");
-		this.setFields	(new String[]{"id","nome", "salHoraInicial"});
+		this.setFields	(new String[]{"id","nome", "salInicial"});
 		this.setKeyField("id");
 	}
 	
@@ -35,7 +35,7 @@ public class CargoDAO extends DBQuery {
 				Cargo tempCargo = new Cargo();
 				tempCargo.setId( rs.getInt("id"));
 				tempCargo.setNome( rs.getString("nome"));
-				tempCargo.setSalHoraInicial(rs.getFloat("salHoraInicial"));
+				tempCargo.setSalInicial(rs.getFloat("salInicial"));
 				tempListCargos.add(tempCargo);
 			}
 		} catch (SQLException e) {
@@ -52,7 +52,7 @@ public class CargoDAO extends DBQuery {
 				Cargo tempCargo = new Cargo();
 				tempCargo.setId( rs.getInt("id"));
 				tempCargo.setNome( rs.getString("nome"));
-				tempCargo.setSalHoraInicial (rs.getFloat("salHoraInicial"));
+				tempCargo.setSalInicial (rs.getFloat("salInicial"));
 				tempListCargos.add(tempCargo);
 			}
 		} catch (SQLException e) {
@@ -69,7 +69,7 @@ public class CargoDAO extends DBQuery {
 				Cargo tempCargo = new Cargo();
 				tempCargo.setId( rs.getInt("id"));
 				tempCargo.setNome( rs.getString("nome"));
-				tempCargo.setSalHoraInicial (rs.getFloat("salHoraInicial"));
+				tempCargo.setSalInicial (rs.getFloat("salInicial"));
 				tempListCargos.add(tempCargo);
 			}
 		} catch (SQLException e) {
