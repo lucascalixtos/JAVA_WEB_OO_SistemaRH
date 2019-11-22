@@ -14,9 +14,9 @@
 	</h:head>
 	<h:body>
 	<p:panel header="Lista de Cargos">
-		<p:dataTable value="#{cargoBean.cargo}" var="c" border="1" id="tabelaCargos">
+		<p:dataTable value="#{cargoBean.cargoRetorno}" var="c" border="1" id="tabelaCargos">
 			<p:column headerText="Cargo">#{c.nome}</p:column>
-			<p:column headerText="Salário Inicial (Hora)">#{c.salHoraInicial}</p:column>
+			<p:column headerText="Salário Inicial (Hora)">#{c.salInicial}</p:column>
 			<p:column headerText="Detalhes" width="80">
 				<p:button value="Detalhes" outcome="/paginas/Sucesso.xhtml?parametro=#{p.nome}"/>
 			</p:column>

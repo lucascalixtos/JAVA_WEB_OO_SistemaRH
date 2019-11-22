@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 22-Nov-2019 às 04:54
--- Versão do servidor: 10.4.8-MariaDB
--- versão do PHP: 7.3.11
+-- Tempo de geraÃ§Ã£o: 22-Nov-2019 Ã s 04:54
+-- VersÃ£o do servidor: 10.4.8-MariaDB
+-- versÃ£o do PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `cargo` (
   `id` int(11) NOT NULL,
   `nomeCargo` varchar(100) NOT NULL,
-  `salHoraInicial` float NOT NULL
+  `salInicial` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -98,35 +98,35 @@ CREATE TABLE `taxas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Índices para tabelas despejadas
+-- Ã�ndices para tabelas despejadas
 --
 
 --
--- Índices para tabela `cargo`
+-- Ã�ndices para tabela `cargo`
 --
 ALTER TABLE `cargo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `funcionario`
+-- Ã�ndices para tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices para tabela `horario`
+-- Ã�ndices para tabela `horario`
 --
 ALTER TABLE `horario`
   ADD KEY `fk_Funcionario` (`id`);
 
 --
--- Índices para tabela `salario`
+-- Ã�ndices para tabela `salario`
 --
 ALTER TABLE `salario`
   ADD KEY `fk_idFuncionario` (`id`);
 
 --
--- Índices para tabela `taxas`
+-- Ã�ndices para tabela `taxas`
 --
 ALTER TABLE `taxas`
   ADD PRIMARY KEY (`id`);
@@ -154,7 +154,7 @@ ALTER TABLE `taxas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Restrições para despejos de tabelas
+-- RestriÃ§Ãµes para despejos de tabelas
 --
 
 --

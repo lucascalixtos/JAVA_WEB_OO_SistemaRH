@@ -55,10 +55,7 @@ public class Cargo implements Serializable {
 		this.salInicial = salInicial;
 	}
 	
-	public void save() {
-		CargoDAO CargoDAO = new CargoDAO();
-		CargoDAO.save();
-	}
+	
 	
 	public void delete() {
 		CargoDAO CargoDAO = new CargoDAO();
