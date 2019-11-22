@@ -14,7 +14,7 @@
 	</h:head>
 	<h:body>
 	<p:panel header="Lista de Funcionários">
-		<p:dataTable value="#{funcionarioBean.funcionario}" var="f" border="1" id="tabelaFuncionarios">
+		<p:dataTable value="#{funcionarioBean.func}" var="f" border="1" id="tabelaFuncionarios">
 			<p:column headerText="Nome">#{f.nome}</p:column>
 			<p:column headerText="Data de Nascimento">#{f.dataNascimento}</p:column>
 			<p:column headerText="Tipo de Contrato">#{f.tipoContrato}</p:column>

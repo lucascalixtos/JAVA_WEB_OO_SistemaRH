@@ -196,9 +196,9 @@ public class Funcionario implements Serializable, Base {
 		funcionarioDAO.delete(this.getId());
 	}
 	
-	public ArrayList<Funcionario> listAll() {
+	/*public ArrayList<Funcionario> listAll() {
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
-		return ( funcionarioDAO.listAll());
+		return ( funcionarioDAO.list());
 	}
 	
 	/*public boolean checkLogin() {

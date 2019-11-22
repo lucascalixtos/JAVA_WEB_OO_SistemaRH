@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -29,7 +30,12 @@ public class FuncionarioMB implements Serializable{
 	@Inject
 	private Funcionario funcionario;
 	
+	private Funcionario funcRetorno;
+	
 	private List<Funcionario> funcionarios = new ArrayList<>();
+	private List<Funcionario> func = new ArrayList<>();
+	
+	
 	
 	public String adicionar(){
 		
@@ -39,25 +45,50 @@ public class FuncionarioMB implements Serializable{
 		return null;
 	}
 	
+public String selecionar(){
+		
+		func = new FuncionarioDAO().list();
+		return null;
+	}
+	
 	private void limpar(){
 		funcionario = new Funcionario();
 	}
 	
 	public Funcionario getFuncionario() {
 		return funcionario;
-	}
+	} 
+	
+	public Funcionario getFuncRetorno() {
+		selecionar();
+		return funcRetorno;
+	} 
 
-	public void setFuncionario(Funcionario Funcionario) {
-		this.funcionario = Funcionario;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
+	}
+	
+	public void setFuncRetorno( Funcionario funcRetorno) {
+		this.funcRetorno = funcRetorno;
 	}
 
 	public List<Funcionario> getFuncionarios() {
+		
 		return funcionarios;
+	}
+	
+public List<Funcionario> getFunc() {
+		selecionar();
+		return func;
 	}
 
 	public void setFuncionarios(List<Funcionario> Funcionarios, List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
+	
+	public void setFunc(List<Funcionario> Func, List<Funcionario> func) {
+		this.func = func;
+	}
+}
 
 	
-}

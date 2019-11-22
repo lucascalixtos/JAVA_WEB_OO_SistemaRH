@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -94,7 +95,7 @@ public class FuncionarioDAO extends DBQuery {
 		return ( tempListFuncionarios );		
 	}
 
-	public ArrayList<Funcionario> listAll() {
+	/*public ArrayList<Funcionario> listAll() {
 		ArrayList<Funcionario> tempListFuncionarios = new ArrayList<Funcionario>();
 		try {
 			ResultSet rs = select();
@@ -122,7 +123,7 @@ public class FuncionarioDAO extends DBQuery {
 			e.printStackTrace();
 		}
 		return ( tempListFuncionarios );		
-	}
+	}*/
 	
 	public boolean checkLogin(String user, String pass){
 		try {
@@ -155,17 +156,48 @@ public class FuncionarioDAO extends DBQuery {
 			ps.setString(14, funcionario.getHorarioEntrada());
 			ps.setString(15, funcionario.getHorarioSaida());
 			ps.execute();
+			conexao.close();
 			System.out.println(ps);
 			
 		} catch (SQLException e) {
 			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
 		}
-		//if ( this.getFuncionario().getId() <= 0) {
-		//System.out.println(this.getFuncionario().toArray());
-			//insert(this.getFuncionario().toArray());
-		//}else {
-			//update(this.getFuncionario().toArray());
-		//}
+		
+	}
+	
+	public ArrayList<Funcionario> list() {
+		ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+		Connection conexao = DBConnection.getConnection();
+		try {
+			Statement ps = conexao.createStatement();
+			ResultSet rs = ps.executeQuery("select * from funcionario");
+			System.out.println(ps);
+			while(rs.next()) {  
+				Funcionario func = new Funcionario(); 
+				func.setId(rs.getInt("id"));  
+				func.setNome(rs.getString("nome"));  	
+				func.setDataNascimento(rs.getString("data_nascimento")); 
+				func.setSexo(rs.getString("sexo")); 
+				func.setTelefone(rs.getString("telefone"));
+				func.setEmail(rs.getString("email")); 
+				func.setCpf(rs.getString("cpf")); 
+				func.setCtps(rs.getString("ctps")); 
+				func.setTipoContrato(rs.getString("tipo_contrato")); 
+				func.setStatus(rs.getString("status")); 
+				func.setRg(rs.getString("rg")); 
+				func.setCep(rs.getString("cep")); 
+				func.setNumResidencial(rs.getString("num_residencia"));
+				func.setCargo(rs.getString("cargo")); 
+				func.setHorarioEntrada(rs.getString("horario_entrada")); 
+				func.setHorarioSaida(rs.getString("horario_saida")); 
+				funcionarios.add(func);  
+			}   
+			
+		} catch (SQLException e) {
+			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
+		}
+		return funcionarios;
+		
 	}
 	
 	public void trash() {
