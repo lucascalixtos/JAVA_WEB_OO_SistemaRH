@@ -34,7 +34,7 @@ public class FuncionarioMB implements Serializable{
 	public String adicionar(){
 		
 		funcionarios.add(funcionario);
-		new FuncionarioDAO().save();
+		new FuncionarioDAO().save(funcionario);
 		limpar();
 		return null;
 	}

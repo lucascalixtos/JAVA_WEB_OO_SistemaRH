@@ -186,10 +186,10 @@ public class Funcionario implements Serializable, Base {
 	}
 	
 	
-	public void save() {
+	/*public void save() {
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
 		funcionarioDAO.save();
-	}
+	}*/
 	
 	public void delete() {
 		FuncionarioDAO funcionarioDAO = new FuncionarioDAO();

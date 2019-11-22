@@ -134,11 +134,11 @@ public class FuncionarioDAO extends DBQuery {
 		return ( false );
 	}
 	
-	public void save() {
+	public void save(Funcionario funcionario) {
 		Connection conexao = DBConnection.getConnection();
 		try {
-			PreparedStatement ps = conexao.prepareCall("INSERT INTO 'funcionarios' ('nome', 'dataNascimento', 'sexo','telefone',"
-					+ "'email', 'cpf', 'ctps', 'tipoContrato', 'status', 'rg','cep','numResidencial', 'cargo', 'horarioEntrada', 'horarioSaida') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = conexao.prepareCall("INSERT INTO funcionario (nome, data_nascimento, sexo, telefone,"
+					+ "email, cpf, ctps, tipo_contrato, status, rg, cep, num_residencia, cargo, horario_entrada, horario_saida) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1, funcionario.getNome());
 			ps.setString(2, funcionario.getDataNascimento());
 			ps.setString(3, funcionario.getSexo());
@@ -147,7 +147,7 @@ public class FuncionarioDAO extends DBQuery {
 			ps.setString(6, funcionario.getCpf());
 			ps.setString(7, funcionario.getCtps());
 			ps.setString(8, funcionario.getTipoContrato());
-			ps.setString(9, funcionario.getStatus());
+			ps.setString(9, "S");
 			ps.setString(10, funcionario.getRg());
 			ps.setString(11, funcionario.getCep());
 			ps.setString(12, funcionario.getNumResidencial());
@@ -155,6 +155,7 @@ public class FuncionarioDAO extends DBQuery {
 			ps.setString(14, funcionario.getHorarioEntrada());
 			ps.setString(15, funcionario.getHorarioSaida());
 			ps.execute();
+			System.out.println(ps);
 			
 		} catch (SQLException e) {
 			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 15-Nov-2019 às 02:03
--- Versão do servidor: 10.1.38-MariaDB
--- versão do PHP: 7.3.4
+-- Tempo de geração: 22-Nov-2019 às 04:54
+-- Versão do servidor: 10.4.8-MariaDB
+-- versão do PHP: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `rh`
+-- Banco de dados: `rh`
 --
 
 -- --------------------------------------------------------
@@ -45,12 +45,12 @@ CREATE TABLE `funcionario` (
   `nome` varchar(255) NOT NULL,
   `data_nascimento` varchar(10) NOT NULL,
   `sexo` varchar(20) NOT NULL,
-  `telefone` varchar(12) NOT NULL,
+  `telefone` varchar(15) NOT NULL,
   `email` varchar(70) NOT NULL,
-  `cpf` varchar(11) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
   `ctps` varchar(255) NOT NULL,
   `tipo_contrato` varchar(255) NOT NULL,
-  `status` tinyint(1) NOT NULL,
+  `status` varchar(1) NOT NULL,
   `rg` varchar(255) NOT NULL,
   `cep` varchar(255) NOT NULL,
   `num_residencia` int(255) NOT NULL,
@@ -67,8 +67,8 @@ CREATE TABLE `funcionario` (
 
 CREATE TABLE `horario` (
   `id` int(11) NOT NULL,
-  `entrada` timestamp(5) NOT NULL DEFAULT CURRENT_TIMESTAMP(5),
-  `saida` timestamp(5) NOT NULL DEFAULT CURRENT_TIMESTAMP(5)
+  `entrada` timestamp(5) NOT NULL DEFAULT current_timestamp(5),
+  `saida` timestamp(5) NOT NULL DEFAULT current_timestamp(5)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -80,7 +80,7 @@ CREATE TABLE `horario` (
 CREATE TABLE `salario` (
   `id` int(11) NOT NULL,
   `salario` float NOT NULL,
-  `dataAlteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `dataAlteracao` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -98,63 +98,63 @@ CREATE TABLE `taxas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `cargo`
+-- Índices para tabela `cargo`
 --
 ALTER TABLE `cargo`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `funcionario`
+-- Índices para tabela `funcionario`
 --
 ALTER TABLE `funcionario`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `horario`
+-- Índices para tabela `horario`
 --
 ALTER TABLE `horario`
   ADD KEY `fk_Funcionario` (`id`);
 
 --
--- Indexes for table `salario`
+-- Índices para tabela `salario`
 --
 ALTER TABLE `salario`
   ADD KEY `fk_idFuncionario` (`id`);
 
 --
--- Indexes for table `taxas`
+-- Índices para tabela `taxas`
 --
 ALTER TABLE `taxas`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `cargo`
+-- AUTO_INCREMENT de tabela `cargo`
 --
 ALTER TABLE `cargo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `funcionario`
+-- AUTO_INCREMENT de tabela `funcionario`
 --
 ALTER TABLE `funcionario`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `taxas`
+-- AUTO_INCREMENT de tabela `taxas`
 --
 ALTER TABLE `taxas`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
