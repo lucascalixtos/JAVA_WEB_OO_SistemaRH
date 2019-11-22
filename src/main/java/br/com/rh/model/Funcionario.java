@@ -3,11 +3,19 @@ package br.com.rh.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-public class Funcionario implements Serializable {
+@Entity
+@Table(name="funcionario")
+public class Funcionario implements Serializable, Base {
 	
 	
 	@Override
+	
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -129,7 +137,10 @@ public class Funcionario implements Serializable {
 	/**
 	*
 	*/
-
+	
+	@Id
+	@GeneratedValue
+	@Column(name="codigo")
 	private int    id;
 	private String nome;
 	private String dataNascimento;

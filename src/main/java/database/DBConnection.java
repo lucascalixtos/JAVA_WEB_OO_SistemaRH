@@ -12,7 +12,7 @@ public class DBConnection {
 	private String user 	= "";
 	private String password = "";
 	
-	private Connection  connection  = null;
+	public static Connection  connection  = null;
 	public  boolean 	isConnected = false;
 	
 	public DBConnection() {
@@ -36,7 +36,7 @@ public class DBConnection {
 		this.mySqlConnect();
 	}
 	
-	public void mySqlConnect(){
+	public void	 mySqlConnect(){
 		 String url = 		
 		    "jdbc:mysql://"	+
 			this.getHost() 	+ ":" + 
@@ -45,6 +45,7 @@ public class DBConnection {
 			"?user=" 	 	+ this.getUser() + 
 			"&password=" 	+ this.getPassword() + 
 			"&useTimezone=true&serverTimezone=UTC";
+		 System.out.println(url);
 		 
 		    try {
 		    	Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -115,7 +116,7 @@ public class DBConnection {
 		this.password = password;
 	}
 
-	public Connection getConnection() {
+	public static Connection getConnection() {
 		return connection;
 	}
 

@@ -15,6 +15,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.com.rh.model.Funcionario;
+import br.com.rh.model.FuncionarioDAO;
 
 @Named("funcionarioBean")
 @SessionScoped
@@ -31,8 +32,9 @@ public class FuncionarioMB implements Serializable{
 	private List<Funcionario> funcionarios = new ArrayList<>();
 	
 	public String adicionar(){
-		funcionarios.add(funcionario);
 		
+		funcionarios.add(funcionario);
+		new FuncionarioDAO().save();
 		limpar();
 		return null;
 	}

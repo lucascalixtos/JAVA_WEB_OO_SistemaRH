@@ -1,17 +1,22 @@
 package br.com.rh.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import br.com.rh.model.Funcionario;
+import database.DBConnection;
 import database.DBQuery;
 
 public class FuncionarioDAO extends DBQuery {
 	
-	private  Funcionario Funcionario = null;
+	private  Funcionario funcionario = null;
 	
 	public FuncionarioDAO(Funcionario Funcionario) {
 		this.setTable	("Funcionario");
@@ -130,11 +135,36 @@ public class FuncionarioDAO extends DBQuery {
 	}
 	
 	public void save() {
-		if ( this.getFuncionario().getId() <= 0) {
-			insert(this.getFuncionario().toArray());
-		}else {
-			update(this.getFuncionario().toArray());
+		Connection conexao = DBConnection.getConnection();
+		try {
+			PreparedStatement ps = conexao.prepareCall("INSERT INTO 'funcionarios' ('nome', 'dataNascimento', 'sexo','telefone',"
+					+ "'email', 'cpf', 'ctps', 'tipoContrato', 'status', 'rg','cep','numResidencial', 'cargo', 'horarioEntrada', 'horarioSaida') VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+			ps.setString(1, funcionario.getNome());
+			ps.setString(2, funcionario.getDataNascimento());
+			ps.setString(3, funcionario.getSexo());
+			ps.setString(4, funcionario.getTelefone());
+			ps.setString(5, funcionario.getEmail());
+			ps.setString(6, funcionario.getCpf());
+			ps.setString(7, funcionario.getCtps());
+			ps.setString(8, funcionario.getTipoContrato());
+			ps.setString(9, funcionario.getStatus());
+			ps.setString(10, funcionario.getRg());
+			ps.setString(11, funcionario.getCep());
+			ps.setString(12, funcionario.getNumResidencial());
+			ps.setString(13, funcionario.getCargo());
+			ps.setString(14, funcionario.getHorarioEntrada());
+			ps.setString(15, funcionario.getHorarioSaida());
+			ps.execute();
+			
+		} catch (SQLException e) {
+			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
 		}
+		//if ( this.getFuncionario().getId() <= 0) {
+		//System.out.println(this.getFuncionario().toArray());
+			//insert(this.getFuncionario().toArray());
+		//}else {
+			//update(this.getFuncionario().toArray());
+		//}
 	}
 	
 	public void trash() {
@@ -145,11 +175,12 @@ public class FuncionarioDAO extends DBQuery {
 	}
 
 	public Funcionario getFuncionario() {
-		return Funcionario;
+		
+		return funcionario;
 	}
 
-	public void setFuncionario(Funcionario Funcionario) {
-		this.Funcionario = Funcionario;
+	public void setFuncionario(Funcionario funcionario) {
+		this.funcionario = funcionario;
 	}
 	
 	
