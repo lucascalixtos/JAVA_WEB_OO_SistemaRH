@@ -21,10 +21,7 @@ public class Horario {
 		this.fk_Funcionario = fk_Funcionario;
 	}
 	
-	public void save() {
-		HorarioDAO HorarioDAO = new HorarioDAO();
-		HorarioDAO.save();
-	}
+	
 	
 	public void delete() {
 		HorarioDAO HorarioDAO = new HorarioDAO();

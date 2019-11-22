@@ -1,12 +1,18 @@
 package br.com.rh.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import br.com.rh.model.Salario;
+import database.DBConnection;
 import database.DBQuery;
 
 public class SalarioDAO extends DBQuery {
@@ -15,14 +21,14 @@ public class SalarioDAO extends DBQuery {
 	
 	public SalarioDAO(Salario Salario) {
 		this.setTable	("Salario");
-		this.setFields	(new String[]{"id", "fgts", "inss", "decimoTercero", "ferias"});
+		this.setFields	(new String[]{"id", "salario","dataAlteracao"});
 		this.setKeyField("id");
 		this.setSalario(Salario);
 	}
 	
 	public SalarioDAO() {
 		this.setTable	("Salario");
-		this.setFields	(new String[]{"id", "fgts", "inss", "decimoTercero", "ferias"});
+		this.setFields	(new String[]{"id", "salario","dataAlteracao"});
 		this.setKeyField("id");
 	}
 	
@@ -36,7 +42,6 @@ public class SalarioDAO extends DBQuery {
 				tempSalario.setId( rs.getInt("id"));
 				tempSalario.setSalario(rs.getFloat("salario"));
 				tempSalario.setDataAlteracao(rs.getLong("dataAlteracao"));
-				tempSalario.setFk_IdCargo(rs.getInt("fk_IdCargo"));
 				tempSalario.setFk_IdFuncionario(rs.getInt("fk_IdFuncionario"));
 				tempListSalarios.add(tempSalario);
 			}
@@ -55,8 +60,6 @@ public class SalarioDAO extends DBQuery {
 				tempSalario.setId( rs.getInt("id"));
 				tempSalario.setSalario(rs.getFloat("salario"));
 				tempSalario.setDataAlteracao(rs.getLong("dataAlteracao"));
-				tempSalario.setFk_IdCargo(rs.getInt("fk_IdCargo"));
-				tempSalario.setFk_IdFuncionario(rs.getInt("fk_IdFuncionario"));
 				tempListSalarios.add(tempSalario);
 			}
 		} catch (SQLException e) {
@@ -74,8 +77,6 @@ public class SalarioDAO extends DBQuery {
 				tempSalario.setId( rs.getInt("id"));
 				tempSalario.setSalario(rs.getFloat("salario"));
 				tempSalario.setDataAlteracao(rs.getLong("dataAlteracao"));
-				tempSalario.setFk_IdCargo(rs.getInt("fk_IdCargo"));
-				tempSalario.setFk_IdFuncionario(rs.getInt("fk_IdFuncionario"));
 				tempListSalarios.add(tempSalario);
 			}
 		} catch (SQLException e) {
@@ -94,12 +95,44 @@ public class SalarioDAO extends DBQuery {
 		return ( false );
 	}
 	
-	public void save() {
-		if ( this.getSalario().getId() <= 0) {
-			insert(this.getSalario().toArray());
-		}else {
-			update(this.getSalario().toArray());
+	public void save(Salario salario) {
+		Connection conexao = DBConnection.getConnection();
+		try {
+			PreparedStatement ps = conexao.prepareCall("INSERT INTO salario (salario, dataAlteracao) VALUES (?,?)");
+			ps.setLong(1, (long) salario.getSalario());
+			ps.setLong(2, salario.getDataAlteracao());
+			
+			ps.execute();
+			conexao.close();
+			System.out.println(ps);
+			
+		} catch (SQLException e) {
+			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
 		}
+		
+	}
+	
+	public ArrayList<Salario> list() {
+		ArrayList<Salario> salarios = new ArrayList<Salario>();
+		Connection conexao = DBConnection.getConnection();
+		try {
+			Statement ps = conexao.createStatement();
+			ResultSet rs = ps.executeQuery("select * from cargo");
+			System.out.println(ps);
+			while(rs.next()) {  
+				Salario s = new Salario(); 
+				s.setId( rs.getInt("id"));
+				s.setSalario(rs.getFloat("salario"));
+				s.setDataAlteracao(rs.getLong("dataAlteracao"));
+				
+				salarios.add(s);  
+			}   
+			
+		} catch (SQLException e) {
+			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
+		}
+		return salarios;
+		
 	}
 	
 	public void trash() {

@@ -25,10 +25,6 @@ public class Salario {
 		
 	}
 	
-	public void save() {
-		SalarioDAO SalarioDAO = new SalarioDAO();
-		SalarioDAO.save();
-	}
 	
 	public void delete() {
 		SalarioDAO SalarioDAO = new SalarioDAO();

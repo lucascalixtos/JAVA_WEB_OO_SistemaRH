@@ -1,12 +1,18 @@
 package br.com.rh.model;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import br.com.rh.model.Horario;
+import database.DBConnection;
 import database.DBQuery;
 
 public class HorarioDAO extends DBQuery {
@@ -88,12 +94,46 @@ public class HorarioDAO extends DBQuery {
 		return ( false );
 	}
 	
-	public void save() {
-		if ( this.getHorario().getId() <= 0) {
-			insert(this.getHorario().toArray());
-		}else {
-			update(this.getHorario().toArray());
+	public void save(Horario horario) {
+		Connection conexao = DBConnection.getConnection();
+		try {
+			PreparedStatement ps = conexao.prepareCall("INSERT INTO horario (entrada, saida, fk_Funcionario) VALUES (?,?,?)");
+			ps.setLong(1, horario.getEntrada());
+			ps.setLong(2, (long) horario.getSaida());
+			ps.setInt(3,  horario.getFk_Funcionario());
+			
+			ps.execute();
+			conexao.close();
+			System.out.println(ps);
+			
+		} catch (SQLException e) {
+			Logger.getLogger(HorarioDAO.class.getName()).log(Level.SEVERE, null, e);
 		}
+		
+	}
+	
+	public ArrayList<Horario> list() {
+		ArrayList<Horario> horarios = new ArrayList<Horario>();
+		Connection conexao = DBConnection.getConnection();
+		try {
+			Statement ps = conexao.createStatement();
+			ResultSet rs = ps.executeQuery("select * from cargo");
+			System.out.println(ps);
+			while(rs.next()) {  
+				Horario h = new Horario(); 
+				h.setId(rs.getInt("id"));  
+				h.setFk_Funcionario(rs.getInt("fk_Funcionario"));
+				h.setEntrada(rs.getLong("entrada"));
+				h.setSaida(rs.getLong("saida"));
+				
+				horarios.add(h);  
+			}   
+			
+		} catch (SQLException e) {
+			Logger.getLogger(HorarioDAO.class.getName()).log(Level.SEVERE, null, e);
+		}
+		return horarios;
+		
 	}
 	
 	public void trash() {

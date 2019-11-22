@@ -22,10 +22,6 @@ public class Taxas {
 		this.ferias = ferias;
 	}
 	
-	public void save() {
-		TaxasDAO TaxasDAO = new TaxasDAO();
-		TaxasDAO.save();
-	}
 	
 	public void delete() {
 		TaxasDAO TaxasDAO = new TaxasDAO();
