@@ -42,10 +42,19 @@ public class SalarioMB implements Serializable{
 		return null;
 	}
 	
-public String selecionar(){
+	public String selecionar(){
 		
 		 salarioRetorno = new SalarioDAO().list();
 		return null;
+	}
+	
+	public float calculaPagamento(){
+		float pagamento = 0;
+		int id = 0;
+		
+		float sal = new SalarioDAO().salarioFuncionario(id);
+		
+		return pagamento;
 	}
 	
 	private void limpar(){
