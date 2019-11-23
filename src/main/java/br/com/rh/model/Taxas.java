@@ -1,9 +1,14 @@
 package br.com.rh.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Taxas {
+public class Taxas implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private float fgts;
 	private float inss;
@@ -28,6 +33,41 @@ public class Taxas {
 		TaxasDAO.delete(this.getId());
 	}
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Float.floatToIntBits(decimoTerceiro);
+		result = prime * result + Float.floatToIntBits(ferias);
+		result = prime * result + Float.floatToIntBits(fgts);
+		result = prime * result + id;
+		result = prime * result + Float.floatToIntBits(inss);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Taxas other = (Taxas) obj;
+		if (Float.floatToIntBits(decimoTerceiro) != Float
+				.floatToIntBits(other.decimoTerceiro))
+			return false;
+		if (Float.floatToIntBits(ferias) != Float.floatToIntBits(other.ferias))
+			return false;
+		if (Float.floatToIntBits(fgts) != Float.floatToIntBits(other.fgts))
+			return false;
+		if (id != other.id)
+			return false;
+		if (Float.floatToIntBits(inss) != Float.floatToIntBits(other.inss))
+			return false;
+		return true;
+	}
+
 	public ArrayList<Taxas> listAll() {
 		TaxasDAO TaxasDAO = new TaxasDAO();
 		return ( TaxasDAO.listAll());

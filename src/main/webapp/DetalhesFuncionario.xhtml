@@ -2,17 +2,17 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Insert title here</title>
+<title>Detalhes do Funcionario</title>
 </h:head>
 <h:body>
-	
 	<f:metadata>
-		<f:viewParam name="parametro" value="#{bean.pessoa.id}"/>
+		<f:viewParam name="parametro" value="#{funcionarioBean.func}"/>
 	</f:metadata>
+	<h1>#{funcionarioBean.func}</h1>
 	
-	<h1>#{bean.pessoa.id}</h1>
 </h:body>
 </html>

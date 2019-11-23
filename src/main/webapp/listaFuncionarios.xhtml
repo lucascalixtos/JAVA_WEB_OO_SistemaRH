@@ -19,7 +19,7 @@
 			<p:column headerText="Data de Nascimento">#{f.dataNascimento}</p:column>
 			<p:column headerText="Tipo de Contrato">#{f.tipoContrato}</p:column>
 			<p:column headerText="Detalhes" width="80">
-				<p:button value="Detalhes" outcome="/paginas/Sucesso.xhtml?parametro=#{p.nome}"/>
+				<p:button value="Detalhes" outcome="DetalhesFuncionario.xhtml?parametro=#{f.id}"/>
 			</p:column>
 		</p:dataTable>
 	</p:panel>

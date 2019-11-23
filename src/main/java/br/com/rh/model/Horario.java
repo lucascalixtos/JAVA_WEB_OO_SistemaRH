@@ -1,15 +1,51 @@
 package br.com.rh.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
-public class Horario {
+public class Horario implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private int fk_Funcionario;
 	private long entrada;
 	private long saida;
 	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + (int) (entrada ^ (entrada >>> 32));
+		result = prime * result + fk_Funcionario;
+		result = prime * result + id;
+		result = prime * result + (int) (saida ^ (saida >>> 32));
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Horario other = (Horario) obj;
+		if (entrada != other.entrada)
+			return false;
+		if (fk_Funcionario != other.fk_Funcionario)
+			return false;
+		if (id != other.id)
+			return false;
+		if (saida != other.saida)
+			return false;
+		return true;
+	}
+
 	public Horario(){
 		
 	}
