@@ -200,6 +200,41 @@ public class FuncionarioDAO extends DBQuery {
 		
 	}
 	
+	public ArrayList<Funcionario> listById(int id) {
+		ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+		Connection conexao = DBConnection.getConnection();
+		try {
+			Statement ps = conexao.createStatement();
+			ResultSet rs = ps.executeQuery("select * from funcionario where id="+id);
+			System.out.println(ps);
+			while(rs.next()) {  
+				Funcionario func = new Funcionario(); 
+				func.setId(rs.getInt("id"));  
+				func.setNome(rs.getString("nome"));  	
+				func.setDataNascimento(rs.getString("data_nascimento")); 
+				func.setSexo(rs.getString("sexo")); 
+				func.setTelefone(rs.getString("telefone"));
+				func.setEmail(rs.getString("email")); 
+				func.setCpf(rs.getString("cpf")); 
+				func.setCtps(rs.getString("ctps")); 
+				func.setTipoContrato(rs.getString("tipo_contrato")); 
+				func.setStatus(rs.getString("status")); 
+				func.setRg(rs.getString("rg")); 
+				func.setCep(rs.getString("cep")); 
+				func.setNumResidencial(rs.getString("num_residencia"));
+				func.setCargo(rs.getString("cargo")); 
+				func.setHorarioEntrada(rs.getString("horario_entrada")); 
+				func.setHorarioSaida(rs.getString("horario_saida")); 
+				funcionarios.add(func);  
+			}   
+			
+		} catch (SQLException e) {
+			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
+		}
+		return funcionarios;
+		
+	}
+	
 	public void trash() {
 		// delete( this.getFuncionario().getId() );
 		this.getFuncionario().setStatus("N");

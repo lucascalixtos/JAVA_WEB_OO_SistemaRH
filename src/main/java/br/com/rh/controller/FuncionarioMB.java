@@ -37,6 +37,7 @@ public class FuncionarioMB implements Serializable{
 	
 	
 	
+	
 	public String adicionar(){
 		
 		funcionarios.add(funcionario);
@@ -50,6 +51,8 @@ public String selecionar(){
 		func = new FuncionarioDAO().list();
 		return null;
 	}
+
+
 	
 	private void limpar(){
 		funcionario = new Funcionario();
@@ -82,6 +85,8 @@ public List<Funcionario> getFunc() {
 		return func;
 	}
 
+
+
 	public void setFuncionarios(List<Funcionario> Funcionarios, List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
 	}
@@ -89,6 +94,8 @@ public List<Funcionario> getFunc() {
 	public void setFunc(List<Funcionario> Func, List<Funcionario> func) {
 		this.func = func;
 	}
+	
+	
 }
 
 	

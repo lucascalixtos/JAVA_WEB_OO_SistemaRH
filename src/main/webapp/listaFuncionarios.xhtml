@@ -19,7 +19,11 @@
 			<p:column headerText="Data de Nascimento">#{f.dataNascimento}</p:column>
 			<p:column headerText="Tipo de Contrato">#{f.tipoContrato}</p:column>
 			<p:column headerText="Detalhes" width="80">
-				<p:button value="Detalhes" outcome="DetalhesFuncionario.xhtml?parametro=#{f.id}"/>
+				<p:button value="Detalhes" outcome="DetalhesFuncionario.xhtml?id=#{f.id}&amp;nome=#{f.nome}
+				&amp;nasc=#{f.dataNascimento}&amp;sexo=#{f.sexo}&amp;tel=#{f.telefone}&amp;
+				email=#{f.email}&amp;cpf=#{f.cpf}&amp;ctps=#{f.ctps}&amp;
+				tipo=#{f.tipoContrato}&amp;status=#{f.status}&amp;rg=#{f.rg}&amp;cep=#{f.cep}&amp;
+				num=#{f.numResidencial}&amp;cargo=#{f.cargo}&amp;horaEnt=#{f.horarioEntrada}&amp;horaSai=#{f.horarioSaida}"/>
 			</p:column>
 		</p:dataTable>
 	</p:panel>

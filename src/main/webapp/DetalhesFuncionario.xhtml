@@ -10,9 +10,43 @@
 </h:head>
 <h:body>
 	<f:metadata>
-		<f:viewParam name="parametro" value="#{funcionarioBean.func}"/>
+		<f:viewParam name="id" value="#{funcionarioBean.funcionario.id}" />
+		<f:viewParam name="nome" value="#{funcionarioBean.funcionario.nome}" />
+		<f:viewParam name="nasc" value="#{funcionarioBean.funcionario.dataNascimento}" />
+		<f:viewParam name="sexo" value="#{funcionarioBean.funcionario.sexo}" />
+		<f:viewParam name="tel" value="#{funcionarioBean.funcionario.telefone}" />
+		<f:viewParam name="email" value="#{funcionarioBean.funcionario.email}" />
+		<f:viewParam name="cpf" value="#{funcionarioBean.funcionario.cpf}" />
+		<f:viewParam name="ctps" value="#{funcionarioBean.funcionario.ctps}" />
+		<f:viewParam name="tipo" value="#{funcionarioBean.funcionario.tipoContrato}" />
+		<f:viewParam name="status" value="#{funcionarioBean.funcionario.status}" />
+		<f:viewParam name="rg" value="#{funcionarioBean.funcionario.rg}" />
+		<f:viewParam name="cep" value="#{funcionarioBean.funcionario.cep}" />
+		<f:viewParam name="num" value="#{funcionarioBean.funcionario.numResidencial}" />
+		<f:viewParam name="cargo" value="#{funcionarioBean.funcionario.cargo}" />
+		<f:viewParam name="horaEnt" value="#{funcionarioBean.funcionario.horarioEntrada}" />
+		<f:viewParam name="horaSai" value="#{funcionarioBean.funcionario.horarioSaida}" />
 	</f:metadata>
-	<h1>#{funcionarioBean.func}</h1>
+	<p:panel header="Detalhes do Funcionário">
+		<h:panelGrid columns="4">
+			<p><b>ID:</b> #{funcionarioBean.funcionario.id}</p>
+			<p><b>Nome:</b> #{funcionarioBean.funcionario.nome}</p>
+			<p><b>Data de Nascimento:</b> #{funcionarioBean.funcionario.dataNascimento}</p>
+			<p><b>Sexo:</b> #{funcionarioBean.funcionario.sexo}</p>
+			<p><b>Telefone:</b> #{funcionarioBean.funcionario.telefone}</p>
+			<p><b>Email:</b> #{funcionarioBean.funcionario.email}</p>
+			<p><b>CPF:</b> #{funcionarioBean.funcionario.cpf}</p>
+			<p><b>CTPS:</b> #{funcionarioBean.funcionario.ctps}</p>
+			<p><b>Tipo de Contrato:</b> #{funcionarioBean.funcionario.tipoContrato}</p>
+			<p><b>Status:</b> #{funcionarioBean.funcionario.status}</p>
+			<p><b>RG:</b> #{funcionarioBean.funcionario.rg}</p>
+			<p><b>CEP:</b> #{funcionarioBean.funcionario.cep}</p>
+			<p><b>Número:</b> #{funcionarioBean.funcionario.numResidencial}</p>
+			<p><b>Cargo:</b> #{funcionarioBean.funcionario.cargo}</p>
+			<p><b>Horário de Entrada:</b> #{funcionarioBean.funcionario.horarioEntrada}</p>
+			<p><b>Horário de Saída:</b> #{funcionarioBean.funcionario.horarioSaida}</p>
+		</h:panelGrid>
+    </p:panel>
 	
 </h:body>
 </html>
