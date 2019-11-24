@@ -60,6 +60,13 @@ public String selecionar(){
 		return null;
 	}
 
+public String selecionarPorId(){
+	
+	int id = funcionario.getId();
+	func = new FuncionarioDAO().listById(id);
+	return null;
+}
+
 
 	
 	private void limpar(){
@@ -93,6 +100,10 @@ public List<Funcionario> getFunc() {
 		return func;
 	}
 
+public List<Funcionario> getFuncById() {
+	selecionarPorId();
+	return func;
+}
 
 
 	public void setFuncionarios(List<Funcionario> Funcionarios, List<Funcionario> funcionarios) {

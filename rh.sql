@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 24-Nov-2019 às 04:56
+-- Tempo de geração: 24-Nov-2019 às 16:59
 -- Versão do servidor: 10.4.8-MariaDB
 -- versão do PHP: 7.3.11
 
@@ -82,6 +82,25 @@ CREATE TABLE `horario` (
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `login`
+--
+
+CREATE TABLE `login` (
+  `id` int(5) NOT NULL,
+  `usuario` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `login`
+--
+
+INSERT INTO `login` (`id`, `usuario`, `senha`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `salario`
 --
 
@@ -128,6 +147,12 @@ ALTER TABLE `horario`
   ADD KEY `fk_Funcionario` (`id`);
 
 --
+-- Índices para tabela `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `salario`
 --
 ALTER TABLE `salario`
@@ -154,6 +179,12 @@ ALTER TABLE `cargo`
 --
 ALTER TABLE `funcionario`
   MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de tabela `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `taxas`

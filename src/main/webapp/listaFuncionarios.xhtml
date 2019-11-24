@@ -17,6 +17,7 @@
 		<p:dataTable value="#{funcionarioBean.func}" var="f" border="1" id="tabelaFuncionarios">
 			<p:column headerText="Nome">#{f.nome}</p:column>
 			<p:column headerText="Data de Nascimento">#{f.dataNascimento}</p:column>
+			<p:column headerText="Cargo">#{f.cargo}</p:column>
 			<p:column headerText="Tipo de Contrato">#{f.tipoContrato}</p:column>
 			<p:column headerText="Detalhes" width="80">
 				<p:button value="Detalhes" outcome="DetalhesFuncionario.xhtml?id=#{f.id}&amp;nome=#{f.nome}
@@ -26,6 +27,7 @@
 				num=#{f.numResidencial}&amp;cargo=#{f.cargo}&amp;horaEnt=#{f.horarioEntrada}&amp;horaSai=#{f.horarioSaida}&amp;salario=#{f.salario}"/>
 			</p:column>
 		</p:dataTable>
+		<p:button value="Novo Funcionário" outcome="CadastroFuncionario.xhtml"/>
 	</p:panel>
 	</h:body>
 </html>

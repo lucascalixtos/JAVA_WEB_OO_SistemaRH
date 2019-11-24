@@ -58,6 +58,7 @@
 					 <p:outputLabel value="Salário" /><p:inputMask
 					 value="#{funcionarioBean.funcionario.salario}" />
 				<p:commandButton value="Salvar" update="form" action="#{funcionarioBean.adicionar}" />
+				<p:button value="Cancelar" outcome="listaFuncionarios.xhtml" />
 			</h:panelGrid>
 		</h:form>
 	</p:panel>
