@@ -157,6 +157,7 @@ public class Funcionario implements Serializable, Base {
 	private String cargo;
 	private String horarioEntrada;
 	private String horarioSaida;
+	private float salario;
 	
 	
 	public Funcionario() {
@@ -164,7 +165,7 @@ public class Funcionario implements Serializable, Base {
 	}
 	
 	public Funcionario(int id, String nome, String dataNascimento, String sexo, String telefone, String email, String cpf, String ctps, 
-			String tipoContrato, String status, String rg, String cep, String numResidencial, String cargo, String horarioEntrada, String horarioSaida) {
+			String tipoContrato, String status, String rg, String cep, String numResidencial, String cargo, String horarioEntrada, String horarioSaida, float salario) {
 		this.id =  id;
 		this.nome =  nome;
 		this.dataNascimento =  dataNascimento;
@@ -181,6 +182,7 @@ public class Funcionario implements Serializable, Base {
 		this.cargo = cargo;
 		this.horarioEntrada = horarioEntrada;
 		this.horarioSaida = horarioSaida;
+		this.salario = salario;
 		
 		
 	}
@@ -224,7 +226,8 @@ public class Funcionario implements Serializable, Base {
 				this.getNumResidencial(),
 				this.getCargo(),
 				this.getHorarioEntrada(),
-				this.getHorarioSaida()	
+				this.getHorarioSaida(),
+				new Float( this.getSalario() ).toString()
 		});
 	}
 	
@@ -246,7 +249,8 @@ public class Funcionario implements Serializable, Base {
 				this.getNumResidencial()+
 				this.getCargo()+
 				this.getHorarioEntrada()+
-				this.getHorarioSaida()
+				this.getHorarioSaida()+
+				this.getSalario()
 		);
 	}
 	
@@ -377,6 +381,14 @@ public class Funcionario implements Serializable, Base {
 
 	public void setHorarioSaida(String horarioSaida) {
 		this.horarioSaida = horarioSaida;
+	}
+	
+	public float getSalario() {
+		return salario;
+	}
+
+	public void setSalario(float salario) {
+		this.salario = salario;
 	}
 	
 	

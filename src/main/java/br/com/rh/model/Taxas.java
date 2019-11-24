@@ -10,19 +10,21 @@ public class Taxas implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	private int id;
-	private String nome;
-	private float valor;
-	private long dataAlteracao;
+	private float fgts;
+	private float inss;
+	private float decimoTerceiro;
+	private float ferias;
 	
 	public Taxas(){
 		
 	}
 	
-	public Taxas(int id, String nome, float valor, long dataAlteracao){
+	public Taxas(int id, float fgts, float inss, float decimoTerceiro, float ferias){
 		this.id = id;
-		this.nome = nome;
-		this.valor = valor;
-		this.dataAlteracao = dataAlteracao;
+		this.fgts = fgts;
+		this.inss = inss;
+		this.decimoTerceiro = decimoTerceiro;
+		this.ferias = ferias;
 	}
 	
 	
@@ -31,31 +33,15 @@ public class Taxas implements Serializable {
 		TaxasDAO.delete(this.getId());
 	}
 	
-	
-	public ArrayList<Taxas> listAll() {
-		TaxasDAO TaxasDAO = new TaxasDAO();
-		return ( TaxasDAO.listAll());
-	}
-	
-	public String[] toArray() {
-		return(
-		new String[] { 
-				new Integer(  this.getId() ).toString(), 
-				new String (  this.getNome() ).toString(),
-				new Float ( this.getValor() ). toString(), 
-				new Long ( this.getDataAlteracao() ). toString(),
-		});
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ (int) (dataAlteracao ^ (dataAlteracao >>> 32));
+		result = prime * result + Float.floatToIntBits(decimoTerceiro);
+		result = prime * result + Float.floatToIntBits(ferias);
+		result = prime * result + Float.floatToIntBits(fgts);
 		result = prime * result + id;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + Float.floatToIntBits(valor);
+		result = prime * result + Float.floatToIntBits(inss);
 		return result;
 	}
 
@@ -68,26 +54,43 @@ public class Taxas implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Taxas other = (Taxas) obj;
-		if (dataAlteracao != other.dataAlteracao)
+		if (Float.floatToIntBits(decimoTerceiro) != Float
+				.floatToIntBits(other.decimoTerceiro))
+			return false;
+		if (Float.floatToIntBits(ferias) != Float.floatToIntBits(other.ferias))
+			return false;
+		if (Float.floatToIntBits(fgts) != Float.floatToIntBits(other.fgts))
 			return false;
 		if (id != other.id)
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
-				return false;
-		} else if (!nome.equals(other.nome))
-			return false;
-		if (Float.floatToIntBits(valor) != Float.floatToIntBits(other.valor))
+		if (Float.floatToIntBits(inss) != Float.floatToIntBits(other.inss))
 			return false;
 		return true;
 	}
 
+	public ArrayList<Taxas> listAll() {
+		TaxasDAO TaxasDAO = new TaxasDAO();
+		return ( TaxasDAO.listAll());
+	}
+	
+	public String[] toArray() {
+		return(
+		new String[] { 
+				new Integer(  this.getId() ).toString(), 
+				new Float (  this.getFgts() ).toString(),
+				new Float ( this.getInss() ). toString(), 
+				new Float ( this.getDecimoTerceiro() ). toString(),
+				new Float ( this.getFerias() ). toString()
+		});
+	}
+	
 	public String toString() {
 		return(
-				new Integer(  this.getId() ).toString() +
-				new String (  this.getNome() ).toString() +
-				new Float ( this.getValor() ). toString() + 
-				new Long ( this.getDataAlteracao() ). toString()
+				new Integer(  this.getId() ).toString() +  
+				new Float (  this.getFgts() ).toString() +
+				new Float ( this.getInss() ). toString() + 
+				new Float ( this.getDecimoTerceiro() ). toString() +
+				new Float ( this.getFerias() ). toString()
 		);
 	}
 
@@ -99,32 +102,36 @@ public class Taxas implements Serializable {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public float getFgts() {
+		return fgts;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setFgts(float fgts) {
+		this.fgts = fgts;
 	}
 
-	public float getValor() {
-		return valor;
+	public float getInss() {
+		return inss;
 	}
 
-	public void setValor(float valor) {
-		this.valor = valor;
+	public void setInss(float inss) {
+		this.inss = inss;
 	}
 
-	public long getDataAlteracao() {
-		return dataAlteracao;
+	public float getDecimoTerceiro() {
+		return decimoTerceiro;
 	}
 
-	public void setDataAlteracao(long dataAlteracao) {
-		this.dataAlteracao = dataAlteracao;
+	public void setDecimoTerceiro(float decimoTerceiro) {
+		this.decimoTerceiro = decimoTerceiro;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public float getFerias() {
+		return ferias;
+	}
+
+	public void setFerias(float ferias) {
+		this.ferias = ferias;
 	}
 
 	

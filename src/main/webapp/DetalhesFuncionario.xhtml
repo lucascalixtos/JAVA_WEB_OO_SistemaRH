@@ -3,12 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Detalhes do Funcionario</title>
 </h:head>
-<h:body>
+<h:body> 
 	<f:metadata>
 		<f:viewParam name="id" value="#{funcionarioBean.funcionario.id}" />
 		<f:viewParam name="nome" value="#{funcionarioBean.funcionario.nome}" />
@@ -26,9 +27,10 @@
 		<f:viewParam name="cargo" value="#{funcionarioBean.funcionario.cargo}" />
 		<f:viewParam name="horaEnt" value="#{funcionarioBean.funcionario.horarioEntrada}" />
 		<f:viewParam name="horaSai" value="#{funcionarioBean.funcionario.horarioSaida}" />
+		<f:viewParam name="salario" value="#{funcionarioBean.funcionario.salario}" />
 	</f:metadata>
 	<p:panel header="Detalhes do Funcionário">
-		<h:panelGrid columns="4">
+		<h:panelGrid columns="2">
 			<p><b>ID:</b> #{funcionarioBean.funcionario.id}</p>
 			<p><b>Nome:</b> #{funcionarioBean.funcionario.nome}</p>
 			<p><b>Data de Nascimento:</b> #{funcionarioBean.funcionario.dataNascimento}</p>
@@ -45,7 +47,9 @@
 			<p><b>Cargo:</b> #{funcionarioBean.funcionario.cargo}</p>
 			<p><b>Horário de Entrada:</b> #{funcionarioBean.funcionario.horarioEntrada}</p>
 			<p><b>Horário de Saída:</b> #{funcionarioBean.funcionario.horarioSaida}</p>
+			<p><b>Salário:</b> #{funcionarioBean.funcionario.salario}</p>
 		</h:panelGrid>
+		<p:button value="Editar" icon="ui-icon-pencil" outcome="Edicao.xhtml"/>
     </p:panel>
 	
 </h:body>

@@ -98,10 +98,9 @@ public class SalarioDAO extends DBQuery {
 	public void save(Salario salario) {
 		Connection conexao = DBConnection.getConnection();
 		try {
-			PreparedStatement ps = conexao.prepareCall("INSERT INTO salario (salario, fk_idCargo, fk_idFuncionario) VALUES (?,?,?))");
+			PreparedStatement ps = conexao.prepareCall("INSERT INTO salario (salario, dataAlteracao) VALUES (?,?)");
 			ps.setLong(1, (long) salario.getSalario());
-			ps.setLong(2, salario.getFk_IdCargo());
-			ps.setLong(3, salario.getFk_IdFuncionario());
+			ps.setLong(2, salario.getDataAlteracao());
 			
 			ps.execute();
 			conexao.close();
@@ -118,15 +117,14 @@ public class SalarioDAO extends DBQuery {
 		Connection conexao = DBConnection.getConnection();
 		try {
 			Statement ps = conexao.createStatement();
-			ResultSet rs = ps.executeQuery("select * from salario");
+			ResultSet rs = ps.executeQuery("select * from cargo");
 			System.out.println(ps);
 			while(rs.next()) {  
 				Salario s = new Salario(); 
 				s.setId( rs.getInt("id"));
 				s.setSalario(rs.getFloat("salario"));
 				s.setDataAlteracao(rs.getLong("dataAlteracao"));
-				s.setFk_IdCargo(rs.getInt("fk_IdCargo"));
-				s.setFk_IdFuncionario(rs.getInt("fk_IdFuncionario"));
+				
 				salarios.add(s);  
 			}   
 			
@@ -134,28 +132,6 @@ public class SalarioDAO extends DBQuery {
 			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
 		}
 		return salarios;
-		
-	}
-	
-	public float salarioFuncionario(int id) {
-		float salario = 0;
-		ArrayList<Salario> salarios = new ArrayList<Salario>();
-		Connection conexao = DBConnection.getConnection();
-		try {
-			Statement ps = conexao.createStatement();
-			ResultSet rs = ps.executeQuery("select * from salario where fk_idFuncionario ="+id);
-			System.out.println(ps);
-			while(rs.next()) {  
-				Salario s = new Salario(); 
-				s.setSalario(rs.getFloat("salario"));
-				salario = s.getSalario();
-				salarios.add(s);  
-			}   
-			
-		} catch (SQLException e) {
-			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
-		}
-		return salario;
 		
 	}
 	

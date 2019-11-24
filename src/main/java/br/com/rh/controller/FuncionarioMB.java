@@ -46,6 +46,14 @@ public class FuncionarioMB implements Serializable{
 		return null;
 	}
 	
+public String atualizar(){
+		
+		funcionarios.add(funcionario);
+		new FuncionarioDAO().update(funcionario);
+		limpar();
+		return null;
+	}
+	
 public String selecionar(){
 		
 		func = new FuncionarioDAO().list();

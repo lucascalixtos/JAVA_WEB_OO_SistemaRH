@@ -10,11 +10,11 @@
 	
 	<h:outputStylesheet library="css" name="file.css" />
 	
-	<title>Cadastro de Funcionário</title>
+	<title>Edição de Funcionário</title>
 </h:head>
 <h:body>
 	
-	<p:panel header="Cadastro de Funcionários" >
+	<p:panel header="Edição de Funcionário" >
 		<h:form id="form">
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Nome" /> <p:inputText value="#{funcionarioBean.funcionario.nome}"/>
@@ -47,7 +47,7 @@
 				<p:selectOneMenu value="#{funcionarioBean.funcionario.cargo}" >
 					<f:selectItem itemLabel="Programador Junior" itemValue="Programador Junior" />
 					<f:selectItem itemLabel="Programador Pleno" itemValue="Programador Pleno" />
-					<f:selectItem itemLabel="Programador Senior" itemValue="Programador Senior " />
+					<f:selectItem itemLabel="Programador Senior" itemValue="Programador Senior" />
 					<f:selectItem itemLabel="Supervisor" itemValue="Supervisor" />
 					<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
 				</p:selectOneMenu>
@@ -57,7 +57,7 @@
 					 value="#{funcionarioBean.funcionario.horarioSaida}" mask="99:99"/>
 					 <p:outputLabel value="Salário" /><p:inputMask
 					 value="#{funcionarioBean.funcionario.salario}" />
-				<p:commandButton value="Salvar" update="form" action="#{funcionarioBean.adicionar}" />
+				<p:button value="Salvar" update="form" action="#{funcionarioBean.atualizar}" outcome="listaFuncionarios.xhtml" />
 			</h:panelGrid>
 		</h:form>
 	</p:panel>

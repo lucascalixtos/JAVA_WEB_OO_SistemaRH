@@ -139,7 +139,7 @@ public class FuncionarioDAO extends DBQuery {
 		Connection conexao = DBConnection.getConnection();
 		try {
 			PreparedStatement ps = conexao.prepareCall("INSERT INTO funcionario (nome, data_nascimento, sexo, telefone,"
-					+ "email, cpf, ctps, tipo_contrato, status, rg, cep, num_residencia, cargo, horario_entrada, horario_saida) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+					+ "email, cpf, ctps, tipo_contrato, status, rg, cep, num_residencia, cargo, horario_entrada, horario_saida, salario) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 			ps.setString(1, funcionario.getNome());
 			ps.setString(2, funcionario.getDataNascimento());
 			ps.setString(3, funcionario.getSexo());
@@ -148,13 +148,46 @@ public class FuncionarioDAO extends DBQuery {
 			ps.setString(6, funcionario.getCpf());
 			ps.setString(7, funcionario.getCtps());
 			ps.setString(8, funcionario.getTipoContrato());
-			ps.setString(9, "S");
+			ps.setString(9, "Ativo");
 			ps.setString(10, funcionario.getRg());
 			ps.setString(11, funcionario.getCep());
 			ps.setString(12, funcionario.getNumResidencial());
 			ps.setString(13, funcionario.getCargo());
 			ps.setString(14, funcionario.getHorarioEntrada());
 			ps.setString(15, funcionario.getHorarioSaida());
+			ps.setFloat(16, funcionario.getSalario());
+			ps.execute();
+			conexao.close();
+			System.out.println(ps);
+			
+		} catch (SQLException e) {
+			Logger.getLogger(FuncionarioDAO.class.getName()).log(Level.SEVERE, null, e);
+		}
+		
+	}
+	
+	public void update(Funcionario funcionario) {
+		Connection conexao = DBConnection.getConnection();
+		try {
+			PreparedStatement ps = conexao.prepareCall("UPDATE funcionario SET nome = ?, data_nascimento = ?, sexo = ?, telefone = ?,"
+					+ "email = ?, cpf = ?, ctps = ?, tipo_contrato = ?, status = ?, rg = ?, cep = ?, num_residencia = ?, cargo = ?, horario_entrada = ?, horario_saida = ?, salario = ? WHERE id = ?");
+			ps.setString(1, funcionario.getNome());
+			ps.setString(2, funcionario.getDataNascimento());
+			ps.setString(3, funcionario.getSexo());
+			ps.setString(4, funcionario.getTelefone());
+			ps.setString(5, funcionario.getEmail());
+			ps.setString(6, funcionario.getCpf());
+			ps.setString(7, funcionario.getCtps());
+			ps.setString(8, funcionario.getTipoContrato());
+			ps.setString(9, "Ativo");
+			ps.setString(10, funcionario.getRg());
+			ps.setString(11, funcionario.getCep());
+			ps.setString(12, funcionario.getNumResidencial());
+			ps.setString(13, funcionario.getCargo());
+			ps.setString(14, funcionario.getHorarioEntrada());
+			ps.setString(15, funcionario.getHorarioSaida());
+			ps.setFloat(16, funcionario.getSalario());
+			ps.setInt(17, funcionario.getId());
 			ps.execute();
 			conexao.close();
 			System.out.println(ps);
@@ -190,6 +223,7 @@ public class FuncionarioDAO extends DBQuery {
 				func.setCargo(rs.getString("cargo")); 
 				func.setHorarioEntrada(rs.getString("horario_entrada")); 
 				func.setHorarioSaida(rs.getString("horario_saida")); 
+				func.setSalario(rs.getFloat("salario")); 
 				funcionarios.add(func);  
 			}   
 			
@@ -224,7 +258,8 @@ public class FuncionarioDAO extends DBQuery {
 				func.setNumResidencial(rs.getString("num_residencia"));
 				func.setCargo(rs.getString("cargo")); 
 				func.setHorarioEntrada(rs.getString("horario_entrada")); 
-				func.setHorarioSaida(rs.getString("horario_saida")); 
+				func.setHorarioSaida(rs.getString("horario_saida"));
+				func.setSalario(rs.getFloat("salario"));
 				funcionarios.add(func);  
 			}   
 			

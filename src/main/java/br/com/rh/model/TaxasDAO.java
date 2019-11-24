@@ -21,14 +21,14 @@ public class TaxasDAO extends DBQuery {
 	
 	public TaxasDAO(Taxas Taxas) {
 		this.setTable	("Taxas");
-		this.setFields	(new String[]{"id", "nome", "valor", "dataAlteracao"});
+		this.setFields	(new String[]{"id", "fgts", "inss", "decimoTercero", "ferias"});
 		this.setKeyField("id");
 		this.setTaxas(Taxas);
 	}
 	
 	public TaxasDAO() {
 		this.setTable	("Taxas");
-		this.setFields	(new String[]{"id", "nome", "valor", "dataAlteracao"});
+		this.setFields	(new String[]{"id", "fgts", "inss", "decimoTercero", "ferias"});
 		this.setKeyField("id");
 	}
 	
@@ -40,9 +40,10 @@ public class TaxasDAO extends DBQuery {
 			while (rs.next()) {
 				Taxas tempTaxas = new Taxas();
 				tempTaxas.setId( rs.getInt("id"));
-				tempTaxas.setNome(rs.getString("nome"));
-				tempTaxas.setValor(rs.getFloat("valor"));
-				tempTaxas.setDataAlteracao(rs.getLong("dataAlteracao"));
+				tempTaxas.setFgts(rs.getFloat("fgts"));
+				tempTaxas.setInss(rs.getFloat("inss"));
+				tempTaxas.setDecimoTerceiro(rs.getFloat("decimoTerceiro"));
+				tempTaxas.setFerias(rs.getFloat("ferias"));
 				tempListTaxass.add(tempTaxas);
 			}
 		} catch (SQLException e) {
@@ -58,9 +59,10 @@ public class TaxasDAO extends DBQuery {
 			while (rs.next()) {
 				Taxas tempTaxas = new Taxas();
 				tempTaxas.setId( rs.getInt("id"));
-				tempTaxas.setNome(rs.getString("nome"));
-				tempTaxas.setValor(rs.getFloat("valor"));
-				tempTaxas.setDataAlteracao(rs.getLong("dataAlteracao"));
+				tempTaxas.setFgts(rs.getFloat("fgts"));
+				tempTaxas.setInss(rs.getFloat("inss"));
+				tempTaxas.setDecimoTerceiro(rs.getFloat("decimoTerceiro"));
+				tempTaxas.setFerias(rs.getFloat("ferias"));
 				tempListTaxass.add(tempTaxas);
 			}
 		} catch (SQLException e) {
@@ -76,10 +78,10 @@ public class TaxasDAO extends DBQuery {
 			while (rs.next()) {
 				Taxas tempTaxas = new Taxas();
 				tempTaxas.setId( rs.getInt("id"));
-				tempTaxas.setNome(rs.getString("nome"));
-				tempTaxas.setValor(rs.getFloat("valor"));
-				tempTaxas.setDataAlteracao(rs.getLong("dataAlteracao"));
-				tempListTaxass.add(tempTaxas);
+				tempTaxas.setFgts(rs.getFloat("fgts"));
+				tempTaxas.setInss(rs.getFloat("inss"));
+				tempTaxas.setDecimoTerceiro(rs.getFloat("decimoTerceiro"));
+				tempTaxas.setFerias(rs.getFloat("ferias"));
 				tempListTaxass.add(tempTaxas);
 			}
 		} catch (SQLException e) {
@@ -101,9 +103,11 @@ public class TaxasDAO extends DBQuery {
 	public void save(Taxas taxa) {
 		Connection conexao = DBConnection.getConnection();
 		try {
-			PreparedStatement ps = conexao.prepareCall("INSERT INTO taxas (nome, valor) VALUES (?,?)");
-			ps.setString(1, taxa.getNome());
-			ps.setFloat(2, taxa.getValor());
+			PreparedStatement ps = conexao.prepareCall("INSERT INTO salario (fgts, inss, decimoTerceiro, ferias) VALUES (?,?,?,?)");
+			ps.setLong(1, (long) taxa.getFgts());
+			ps.setLong(2, (long) taxa.getInss());
+			ps.setLong(3, (long) taxa.getDecimoTerceiro());
+			ps.setLong(4, (long) taxa.getFerias());
 			
 			ps.execute();
 			conexao.close();
@@ -125,9 +129,11 @@ public class TaxasDAO extends DBQuery {
 			while(rs.next()) {  
 				Taxas t = new Taxas(); 
 				t.setId( rs.getInt("id"));
-				t.setNome(rs.getString("nome"));
-				t.setValor(rs.getFloat("valor"));
-				t.setDataAlteracao(rs.getLong("dataAlteracao"));
+				t.setId( rs.getInt("id"));
+				t.setFgts(rs.getFloat("fgts"));
+				t.setInss(rs.getFloat("inss"));
+				t.setDecimoTerceiro(rs.getFloat("decimoTerceiro"));
+				t.setFerias(rs.getFloat("ferias"));
 				
 				taxas.add(t); 
 			}
