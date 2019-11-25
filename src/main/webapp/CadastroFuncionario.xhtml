@@ -9,12 +9,29 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
 	<h:outputStylesheet library="css" name="file.css" />
-	
+	<h:outputScript library="js" name="locale.js"/>
 	<title>Cadastro de Funcionário</title>
 </h:head>
 <h:body>
-	
-	<p:panel header="Cadastro de Funcionários" >
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="west" size="230" header="Menu Lateral"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:menu style="width:100%">
+					<p:menuitem value="Cadastrar" outcome="CadastroFuncionario.xhtml"></p:menuitem>
+					<p:menuitem value="Consultar" outcome="listaFuncionarios.xhtml">
+					</p:menuitem>
+					<p:menuitem value="Sobre" outcome="sobre.xhtml"></p:menuitem>
+					<p:menuitem value="Sair" outcome="login.xhtml"></p:menuitem>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<p:panel header="Cadastro de Funcionários" >
 		<h:form id="form">
 			<h:panelGrid columns="2">
 				<p:outputLabel value="Nome" /> <p:inputText value="#{funcionarioBean.funcionario.nome}"/>
@@ -62,5 +79,10 @@
 			</h:panelGrid>
 		</h:form>
 	</p:panel>
+		</p:layoutUnit>
+
+	</p:layout>
+		
+	
 </h:body>
 </html>

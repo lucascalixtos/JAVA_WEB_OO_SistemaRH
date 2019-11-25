@@ -6,7 +6,9 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<h:outputStylesheet library="css" name="file.css" />
+	<h:outputScript library="js" name="locale.js"/>
 <title>Detalhes do Funcionario</title>
 </h:head>
 <h:body> 
@@ -29,7 +31,25 @@
 		<f:viewParam name="horaSai" value="#{funcionarioBean.funcionario.horarioSaida}" />
 		<f:viewParam name="salario" value="#{funcionarioBean.funcionario.salario}" />
 	</f:metadata>
-	<p:panel header="Detalhes do Funcionário">
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="west" size="230" header="Menu Lateral"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:menu style="width:100%">
+					<p:menuitem value="Cadastrar" outcome="CadastroFuncionario.xhtml"></p:menuitem>
+					<p:menuitem value="Consultar" outcome="listaFuncionarios.xhtml">
+					</p:menuitem>
+					<p:menuitem value="Sobre" outcome="sobre.xhtml"></p:menuitem>
+					<p:menuitem value="Sair" outcome="login.xhtml"></p:menuitem>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<p:panel header="Detalhes do Funcionário">
 		<h:panelGrid columns="2">
 			<p><b>ID:</b> #{funcionarioBean.funcionario.id}</p>
 			<p><b>Nome:</b> #{funcionarioBean.funcionario.nome}</p>
@@ -42,7 +62,7 @@
 			<p><b>Tipo de Contrato:</b> #{funcionarioBean.funcionario.tipoContrato}</p>
 			<p><b>Status:</b> #{funcionarioBean.funcionario.status}</p>
 			<p><b>RG:</b> #{funcionarioBean.funcionario.rg}</p>
-			<p><b>CEP:</b> #{funcionarioBean.funcionario.cep}</p>
+			<p><b>CEP:</b><span id="cep"> #{funcionarioBean.funcionario.cep}</span></p>
 			<p><b>Número:</b> #{funcionarioBean.funcionario.numResidencial}</p>
 			<p><b>Cargo:</b> #{funcionarioBean.funcionario.cargo}</p>
 			<p><b>Horário de Entrada:</b> #{funcionarioBean.funcionario.horarioEntrada}</p>
@@ -51,6 +71,10 @@
 		</h:panelGrid>
 		<p:button value="Editar" icon="ui-icon-pencil" outcome="Edicao.xhtml"/>
     </p:panel>
+		</p:layoutUnit>
+
+	</p:layout>
+	
 	
 </h:body>
 </html>

@@ -9,25 +9,48 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		
 		<h:outputStylesheet library="css" name="file.css" />
-		
+		<h:outputScript library="js" name="locale.js"/>
 		<title>Lista de Funcionários</title>
 	</h:head>
 	<h:body>
-	<p:panel header="Lista de Funcionários">
-		<p:dataTable value="#{funcionarioBean.func}" var="f" border="1" id="tabelaFuncionarios">
-			<p:column headerText="Nome">#{f.nome}</p:column>
-			<p:column headerText="Data de Nascimento">#{f.dataNascimento}</p:column>
-			<p:column headerText="Cargo">#{f.cargo}</p:column>
-			<p:column headerText="Tipo de Contrato">#{f.tipoContrato}</p:column>
-			<p:column headerText="Detalhes" width="80">
-				<p:button value="Detalhes" outcome="DetalhesFuncionario.xhtml?id=#{f.id}&amp;nome=#{f.nome}
-				&amp;nasc=#{f.dataNascimento}&amp;sexo=#{f.sexo}&amp;tel=#{f.telefone}&amp;
-				email=#{f.email}&amp;cpf=#{f.cpf}&amp;ctps=#{f.ctps}&amp;
-				tipo=#{f.tipoContrato}&amp;status=#{f.status}&amp;rg=#{f.rg}&amp;cep=#{f.cep}&amp;
-				num=#{f.numResidencial}&amp;cargo=#{f.cargo}&amp;horaEnt=#{f.horarioEntrada}&amp;horaSai=#{f.horarioSaida}&amp;salario=#{f.salario}"/>
-			</p:column>
-		</p:dataTable>
-		<p:button value="Novo Funcionário" outcome="CadastroFuncionario.xhtml"/>
-	</p:panel>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="west" size="230" header="Menu Lateral"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:menu style="width:100%">
+					<p:menuitem value="Cadastrar" outcome="CadastroFuncionario.xhtml"></p:menuitem>
+					<p:menuitem value="Consultar" outcome="listaFuncionarios.xhtml">
+					</p:menuitem>
+					<p:menuitem value="Sobre" outcome="sobre.xhtml"></p:menuitem>
+					<p:menuitem value="Sair" outcome="login.xhtml"></p:menuitem>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<p:panel header="Lista de Funcionários">
+				<p:dataTable value="#{funcionarioBean.func}" var="f" border="1" id="tabelaFuncionarios">
+					<p:column headerText="Nome">#{f.nome}</p:column>
+					<p:column headerText="Data de Nascimento">#{f.dataNascimento}</p:column>
+					<p:column headerText="Cargo">#{f.cargo}</p:column>
+					<p:column headerText="Tipo de Contrato">#{f.tipoContrato}</p:column>
+					<p:column headerText="Detalhes" width="80">
+					<p:button value="Detalhes" outcome="DetalhesFuncionario.xhtml?id=#{f.id}&amp;nome=#{f.nome}
+						&amp;nasc=#{f.dataNascimento}&amp;sexo=#{f.sexo}&amp;tel=#{f.telefone}&amp;
+						email=#{f.email}&amp;cpf=#{f.cpf}&amp;ctps=#{f.ctps}&amp;
+						tipo=#{f.tipoContrato}&amp;status=#{f.status}&amp;rg=#{f.rg}&amp;cep=#{f.cep}&amp;
+						num=#{f.numResidencial}&amp;cargo=#{f.cargo}&amp;horaEnt=#{f.horarioEntrada}&amp;horaSai=#{f.horarioSaida}&amp;salario=#{f.salario}"/>
+					</p:column>
+				</p:dataTable>
+				<p:button value="Novo Funcionário" outcome="CadastroFuncionario.xhtml"/>
+			</p:panel>
+		</p:layoutUnit>
+
+	</p:layout>
+		
+	
 	</h:body>
 </html>
