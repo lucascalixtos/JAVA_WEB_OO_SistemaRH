@@ -9,6 +9,27 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<h:outputStylesheet library="css" name="file.css" />
 	<h:outputScript library="js" name="locale.js"/>
+	<script src="jquery-3.4.1.js" type="text/javascript" language="javascript" ></script>
+	<script>
+		window.onload = ajax;
+	
+		function ajax(){
+			var cep = document.getElementById("cep").innerHTML;
+			cep = cep.replace('-','')
+			console.log(cep)
+			var url = "http://viacep.com.br/ws/"+cep+"/json/" 
+			var data = $.get(url, function(data){
+				console.log(data)
+				document.getElementById("Logradouro").innerHTML = data.logradouro;
+				document.getElementById("Complemento").innerHTML = data.complemento;
+				document.getElementById("Localidade").innerHTML = data.localidade;
+				document.getElementById("UF").innerHTML = data.uf;
+				document.getElementById("Bairro").innerHTML = data.bairro;
+				
+			});
+			return data;
+		}
+	</script>
 <title>Detalhes do Funcionario</title>
 </h:head>
 <h:body> 
@@ -62,7 +83,12 @@
 			<p><b>Tipo de Contrato:</b> #{funcionarioBean.funcionario.tipoContrato}</p>
 			<p><b>Status:</b> #{funcionarioBean.funcionario.status}</p>
 			<p><b>RG:</b> #{funcionarioBean.funcionario.rg}</p>
-			<p><b>CEP:</b><span id="cep"> #{funcionarioBean.funcionario.cep}</span></p>
+			<p><b>CEP:</b><span id="cep">#{funcionarioBean.funcionario.cep}</span></p>
+			<p><b>Logradouro:</b><span id="Logradouro"></span></p>
+			<p><b>Complemento:</b><span id="Complemento"></span></p>
+			<p><b>Cidade:</b><span id="Localidade"></span></p>
+			<p><b>Bairro:</b><span id="Bairro"></span></p>
+			<p><b>UF:</b><span id="UF"></span></p>
 			<p><b>Número:</b> #{funcionarioBean.funcionario.numResidencial}</p>
 			<p><b>Cargo:</b> #{funcionarioBean.funcionario.cargo}</p>
 			<p><b>Horário de Entrada:</b> #{funcionarioBean.funcionario.horarioEntrada}</p>
