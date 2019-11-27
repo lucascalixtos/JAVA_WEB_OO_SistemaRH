@@ -10,6 +10,7 @@
 	
 	<h:outputStylesheet library="css" name="file.css" />
 	<h:outputScript library="js" name="locale.js"/>
+
 	<title>Cadastro de Funcionário</title>
 </h:head>
 <h:body>
@@ -74,7 +75,7 @@
 					 value="#{funcionarioBean.funcionario.horarioSaida}" mask="99:99"/>
 					 <p:outputLabel value="Salário" /><p:inputMask
 					 value="#{funcionarioBean.funcionario.salario}" />
-				<p:commandButton value="Salvar" update="form" action="#{funcionarioBean.adicionar}" />
+				<p:commandButton value="Salvar" id="salvar" update="form"  action="#{funcionarioBean.adicionar}" />
 				<p:button value="Cancelar" outcome="listaFuncionarios.xhtml" />
 			</h:panelGrid>
 		</h:form>
@@ -83,6 +84,13 @@
 
 	</p:layout>
 		
+			<script>
+		document.getElementById("form:salvar").addEventListener("click",redirecionar)
+		function redirecionar(){
+			console.log("Passou aqui")
+			window.location.href = "http://localhost:8080/projeto-rh/listaFuncionarios.xhtml";
+		}
+	</script>
 	
 </h:body>
 </html>
