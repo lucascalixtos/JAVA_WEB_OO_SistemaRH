@@ -13,53 +13,74 @@
 	<title>Edição de Funcionário</title>
 </h:head>
 <h:body>
-	
-	<p:panel header="Edição de Funcionário" >
-		<h:form id="form">
-			<h:panelGrid columns="2">
-				<p:outputLabel value="Nome" /> <p:inputText value="#{funcionarioBean.funcionario.nome}"/>
-				<p:outputLabel value="Data de Nascimento" /> <p:inputMask 
-					value="#{funcionarioBean.funcionario.dataNascimento}" mask="99/99/9999"/>
-				<p:outputLabel value="Sexo" />
-				<p:selectOneMenu value="#{funcionarioBean.funcionario.sexo}" >
-					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-				</p:selectOneMenu>
-				<p:outputLabel value="Telefone" /><p:inputMask 
-					value="#{funcionarioBean.funcionario.telefone}" mask="(99)99999-9999"/>
-				<p:outputLabel value="Email" /><p:inputText value="#{funcionarioBean.funcionario.email}" />
-				<p:outputLabel value="CEP" /><p:inputMask
-					 value="#{funcionarioBean.funcionario.cep}" mask="99999-999" />
-				<p:outputLabel value="Número" /><p:inputText value="#{funcionarioBean.funcionario.numResidencial}" />
-				<p:outputLabel value="RG" /><p:inputMask
-					 value="#{funcionarioBean.funcionario.rg}" mask="99.999.999-9" />
-				<p:outputLabel value="CPF" /><p:inputMask
-					 value="#{funcionarioBean.funcionario.cpf}" mask="999.999.999-99"/>
-				<p:outputLabel value="CTPS" /><p:inputMask
-					 value="#{funcionarioBean.funcionario.ctps}" mask="9999999-99999"/>
-				<p:outputLabel value="Tipo de Contrato" />
-				<p:selectOneMenu value="#{funcionarioBean.funcionario.tipoContrato}">
-					<f:selectItem itemLabel="CLT" itemValue="CLT"  />
-					<f:selectItem itemLabel="Pessoa Jurídica" itemValue="Pessoa Jurídica"  />
-					<f:selectItem itemLabel="Estágio" itemValue="Estágio" />
-				</p:selectOneMenu>
-				<p:outputLabel value="Cargo" />
-				<p:selectOneMenu value="#{funcionarioBean.funcionario.cargo}" >
-					<f:selectItem itemLabel="Programador Junior" itemValue="Programador Junior" />
-					<f:selectItem itemLabel="Programador Pleno" itemValue="Programador Pleno" />
-					<f:selectItem itemLabel="Programador Senior" itemValue="Programador Senior" />
-					<f:selectItem itemLabel="Supervisor" itemValue="Supervisor" />
-					<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
-				</p:selectOneMenu>
-				<p:outputLabel value="Horário de Entrada" /><p:inputMask
-					 value="#{funcionarioBean.funcionario.horarioEntrada}" mask="99:99"/>
-					 <p:outputLabel value="Horário de Saída" /><p:inputMask
-					 value="#{funcionarioBean.funcionario.horarioSaida}" mask="99:99"/>
-					 <p:outputLabel value="Salário" /><p:inputMask
-					 value="#{funcionarioBean.funcionario.salario}" />
-				<p:button value="Salvar" update="form" action="#{funcionarioBean.atualizar}" outcome="listaFuncionarios.xhtml" />
-			</h:panelGrid>
-		</h:form>
-	</p:panel>
+	<p:layout fullPage="true">
+
+			<p:layoutUnit position="west" size="230" header="Menu Lateral"
+				resizable="true" collapsible="true">
+				<h:form>
+					<p:menu style="width:100%">
+						<p:menuitem value="Cadastrar Funcionário" outcome="CadastroFuncionario.xhtml"></p:menuitem>
+						<p:menuitem value="Cadastrar Usuário" outcome="cadastroUsuario.xhtml"></p:menuitem>
+						<p:menuitem value="Listar Funcionários" outcome="listaFuncionarios.xhtml"></p:menuitem>
+						<p:menuitem value="Listar Usuários" outcome="listaUsuarios.xhtml">
+						</p:menuitem>
+						<p:menuitem value="Sobre" outcome="sobre.xhtml"></p:menuitem>
+						<p:menuitem value="Sair" outcome="login.xhtml"></p:menuitem>
+					</p:menu>
+				</h:form>
+			</p:layoutUnit>
+			<p:layoutUnit position="center">
+				
+			</p:layoutUnit>
+			<p:layoutUnit position="center">
+			<p:panel header="Edição de Funcionário" >
+				<h:form id="form">
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Nome" /> <p:inputText value="#{funcionarioBean.funcionario.nome}"/>
+						<p:outputLabel value="Data de Nascimento" /> <p:inputMask 
+							value="#{funcionarioBean.funcionario.dataNascimento}" mask="99/99/9999"/>
+						<p:outputLabel value="Sexo" />
+						<p:selectOneMenu value="#{funcionarioBean.funcionario.sexo}" >
+							<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+							<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+						</p:selectOneMenu>
+						<p:outputLabel value="Telefone" /><p:inputMask 
+							value="#{funcionarioBean.funcionario.telefone}" mask="(99)99999-9999"/>
+						<p:outputLabel value="Email" /><p:inputText value="#{funcionarioBean.funcionario.email}" />
+						<p:outputLabel value="CEP" /><p:inputMask
+							 value="#{funcionarioBean.funcionario.cep}" mask="99999-999" />
+						<p:outputLabel value="Número" /><p:inputText value="#{funcionarioBean.funcionario.numResidencial}" />
+						<p:outputLabel value="RG" /><p:inputMask
+							 value="#{funcionarioBean.funcionario.rg}" mask="99.999.999-9" />
+						<p:outputLabel value="CPF" /><p:inputMask
+							 value="#{funcionarioBean.funcionario.cpf}" mask="999.999.999-99"/>
+						<p:outputLabel value="CTPS" /><p:inputMask
+							 value="#{funcionarioBean.funcionario.ctps}" mask="9999999-99999"/>
+						<p:outputLabel value="Tipo de Contrato" />
+						<p:selectOneMenu value="#{funcionarioBean.funcionario.tipoContrato}">
+							<f:selectItem itemLabel="CLT" itemValue="CLT"  />
+							<f:selectItem itemLabel="Pessoa Jurídica" itemValue="Pessoa Jurídica"  />
+							<f:selectItem itemLabel="Estágio" itemValue="Estágio" />
+						</p:selectOneMenu>
+						<p:outputLabel value="Cargo" />
+						<p:selectOneMenu value="#{funcionarioBean.funcionario.cargo}" >
+							<f:selectItem itemLabel="Programador Junior" itemValue="Programador Junior" />
+							<f:selectItem itemLabel="Programador Pleno" itemValue="Programador Pleno" />
+							<f:selectItem itemLabel="Programador Senior" itemValue="Programador Senior" />
+							<f:selectItem itemLabel="Supervisor" itemValue="Supervisor" />
+							<f:selectItem itemLabel="Gerente" itemValue="Gerente" />
+						</p:selectOneMenu>
+						<p:outputLabel value="Horário de Entrada" /><p:inputMask
+							 value="#{funcionarioBean.funcionario.horarioEntrada}" mask="99:99"/>
+							 <p:outputLabel value="Horário de Saída" /><p:inputMask
+							 value="#{funcionarioBean.funcionario.horarioSaida}" mask="99:99"/>
+							 <p:outputLabel value="Salário" /><p:inputMask
+							 value="#{funcionarioBean.funcionario.salario}" />
+						<p:button value="Salvar" update="form" action="#{funcionarioBean.atualizar}" outcome="listaFuncionarios.xhtml" />
+					</h:panelGrid>
+				</h:form>
+			</p:panel>
+		</p:layoutUnit>
+	</p:layout>
 </h:body>
 </html>

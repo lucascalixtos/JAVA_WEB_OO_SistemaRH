@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+	<h:outputStylesheet library="css" name="file.css" />
+	<h:outputScript library="js" name="locale.js"/>
+
+	<title>Cadastro de Usuário</title>
+</h:head>
+<h:body>
+	<p:layout fullPage="true">
+
+		<p:layoutUnit position="west" size="230" header="Menu Lateral"
+			resizable="true" collapsible="true">
+			<h:form>
+				<p:menu style="width:100%">
+					<p:menuitem value="Cadastrar Funcionário" outcome="CadastroFuncionario.xhtml"></p:menuitem>
+					<p:menuitem value="Cadastrar Usuário" outcome="cadastroUsuario.xhtml"></p:menuitem>
+					<p:menuitem value="Listar Funcionários" outcome="listaFuncionarios.xhtml"></p:menuitem>
+					<p:menuitem value="Listar Usuários" outcome="listaUsuarios.xhtml">
+					</p:menuitem>
+					<p:menuitem value="Sobre" outcome="sobre.xhtml"></p:menuitem>
+					<p:menuitem value="Sair" outcome="login.xhtml"></p:menuitem>
+				</p:menu>
+			</h:form>
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			
+		</p:layoutUnit>
+		<p:layoutUnit position="center">
+			<p:panel header="Cadastro de Usuário" >
+		<h:form id="form">
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Usuário" /> <p:inputText value="#{usuarioBean.usuario.usuario}"/>
+				<p:outputLabel value="Senha" /> <p:password value="#{usuarioBean.usuario.senha}"/>
+				<p:commandButton value="Salvar" id="salvar" update="form"  action="#{usuarioBean.adicionar}" />
+				<p:button value="Cancelar" outcome="listaFuncionarios.xhtml" />
+			</h:panelGrid>
+		</h:form>
+	</p:panel>
+		</p:layoutUnit>
+
+	</p:layout>
+		
+			<script>
+		document.getElementById("form:salvar").addEventListener("click",redirecionar)
+		function redirecionar(){
+			console.log("Passou aqui")
+			window.location.href = "http://localhost:8080/projeto-rh/listaFuncionarios.xhtml";
+		}
+	</script>
+	
+</h:body>
+</html>
